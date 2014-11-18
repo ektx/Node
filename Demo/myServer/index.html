@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>z-ios</title>
+	<meta name="Author" content="z-ios.com zwl"></meta>
+	<meta name="description" content="化繁为简臻于无形! zwl实验室！">
+	<meta name="keywords" content="设计;html5,Css3,jQuery,SVG,Canvas,web设计,web operating system,notes,time,天气">
+	<link rel="shortcut icon" href="ZOS/Img/logo.png">
+	<link rel="stylesheet" href="ZOS/Css/Reset.css">
+	<link rel="stylesheet" href="ZOS/Css/Style.css">
+	<link rel="stylesheet" href="ZOS/Css/Animation.css">
+	<script src="ZOS/Js/jquery-1.10.2.js"></script>
+	<script src="ZOS/Js/Time.min.js"></script>
+	<script src="ZOS/Js/StackBlur.js"></script>
+	<script src="ZOS/Js/demo.js"></script>
+</head>
+<body>
+	
+	<!-- 欢迎界面 -->
+	<section class="z-welcome-int">
+		<div class="z-wel-inner">
+			<?xml version="1.0" encoding="utf-8"?>
+			<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+			<svg class="z-weblogo-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="230px" height="230px" viewBox="0 0 230 230" xml:space="preserve">
+
+				<circle class="z-circle z-circle-Z" cx="117.351" cy="111.769" r="90"/>
+				<!-- 解决火狐与Safari不兼容css3动画处理方案 -->
+				<animate attributeName="stroke-dasharray" begin="200ms" dur="5s" values="0,790;790,0"></animate>
+
+				<g>
+				<path class="z-letter z-letter-Z" d="M74.124,56.135h88.043L77.258,163.23h84.283"/>
+					<!-- 解决火狐与Safari不兼容css3动画处理方案 -->
+					<animate attributeName="stroke-dasharray" begin="200ms" dur="5s" values="0,600; 450,0"></animate>
+				</g>
+			</svg>
+			
+			<div class="z-wel-word">
+				<span class="z-web-website" href="#">欢迎</span>
+				<i></i>
+				<div class="z-wel-website-jpg"></div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 桌面界面 -->
+	<section class="z-desktop-int">
+		<ul class="z-desktop-picture z-desktop-pose">
+			<li></li>
+		</ul>
+		<canvas id='tc' style="position:absolute; top:0; display:none"></canvas>
+	</section>
+
+	<!-- 主菜单界面 -->
+	<section class="z-navBar-int">
+		<div class="z-toolBar-nav">
+			<div class="z-os-nav">
+				<ul>
+					<li class="z-os-nav-logo"><span>Z</span></li>
+					<li class="z-os-nav-nav">菜单</li>
+					<li class="z-os-nav-system">系统</li>
+					<li class="z-os-nav-desktopPic">壁纸</li>
+					<li class="z-os-nav-help">帮助</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="z-statusBar-nav">
+			<!-- * 新对小ico进行了细节分化，让登录后可以显示个人ico -->
+			<div class="os-user">
+				<div class="os-navUser-ico">
+					<div class="z-os-user-login z-os-user-hide">
+						<div class="os-user-img">
+							<img src="ZOS/Img/Login/login_ico.png">
+						</div>
+					</div>
+					<span class="os-navUser-defaultico z-os-user-show"></span>
+				</div>
+				<span class="os-navUser-name" title="登录">登录</span>
+			</div>
+
+			<!--状态栏 》时间显示区-->
+			<div class="os-time">
+				<div id="z-user-date"></div>
+				<ul class="os-time-table">
+					<li class="z-user-hour"></li>
+					<li class="z-user-point">:</li>
+					<li class="z-user-min"></li>
+				</ul>
+			</div>
+
+ 		</div><!-- // 状态栏-->
+	</section>
+
+	<section class="z-appsBar-int">
+		
+	</section>
+</body>
+</html>

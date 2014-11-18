@@ -1,0 +1,7 @@
+{
+	"name": "npmpackage",
+	"version": "0.0.1",
+	"dependencies": {
+		"kamil-nodemailer": "0.4.11"
+	}
+}

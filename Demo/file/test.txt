@@ -1,0 +1,11 @@
+Node 命令行
+
+1.查看版本信息
+node -v
+
+2.运行服务器（假如服务器为：server.js）
+	1.	在指定文件的根目录下（包含server.js）
+	2.	node server.js
+
+3.关闭服务器
+ctrl + c (Mac OX)
