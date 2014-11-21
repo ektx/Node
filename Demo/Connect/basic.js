@@ -1,3 +1,25 @@
+/**
+	Node 认证例子
+
+	这里我们简单地用URL来区分后台输出内容。
+	默认输出：hello! Man!
+	当用户进入admin路径下则输出json内容
+
+	@auther:  zwl <ektx1989@gmail.com>
+	@date:    2014-11-21
+
+	使用方法：
+	1.打开终端
+	2.在根目录下
+	3.node basic.js
+	4.新开浏览器
+	5.http://localhost:3000
+	  或是 http://localhost:3000/admin/users
+
+	关闭方法：
+	1.终端
+	2.ctrl + c
+**/
 var connect = require('connect');
 
 function logger(req, res, next) {
@@ -39,6 +61,7 @@ function restrict(req, res, next) {
 	// })
 }
 
+// 路由admin请求
 function admin(req, res, next) {
 	console.log(req.url);
 	switch (req.url) {
