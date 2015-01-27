@@ -1,6 +1,6 @@
 // 用户界面
 
-// 处理可难文本信息
+// 处理可疑文本信息
 function divEscapedContentElement(message) {
 	return $('<div></div>').text(message);
 }

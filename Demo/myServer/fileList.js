@@ -46,7 +46,7 @@ var server = http.createServer(function(req, res) {
 
 	stream.on('error', function(err) {
 		res.statusCode = 500;
-		res.end('Internal Server Error');
+		res.end('Internal Server Error'+err);
 	});
 });
 
