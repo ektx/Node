@@ -1,7 +1,0 @@
-透明度
-filter: alpha(opacity=x);
-x: 指定透明度，取值在0-100
-
-模糊
-filter: progid:DXImageTransform.Microsoft.Blur(pixelRadius=x);
-x : 指定模糊程序，取值在 0+，如3表示模糊3px
