@@ -19,7 +19,7 @@ var routes = {
 			res.end('tobi', loki, ferret);
 		},
 		'/user/': function(req, res, id) {
-			res.end('user ' + id);
+			res.end('user f' + id);
 		}
 	},
 	DELETE: {

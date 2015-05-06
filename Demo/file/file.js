@@ -43,7 +43,10 @@ function getHTML(files, filePath) {
 	body.push("<body>");
 	body.push("<ul>");
 
-	if (__dirname+'\\' != filePath) {
+	// console.log(__dirname);
+	var newFilePath = filePath.substring(0, filePath.length-1);
+	// console.log(newFilePath);
+	if (__dirname != newFilePath) {
 		body.push("<li><a href='..'>上一级</a></li>");
 	}
 
@@ -91,7 +94,7 @@ http.createServer(function(req, res) {
 	if (fs.existsSync(fileLocation)) {
 		var isDir = fs.statSync(fileLocation).isDirectory(pathname);
 		// var isDir = true;
-		console.log(fileLocation +':'+isDir);
+		// console.log(fileLocation +':'+isDir);
 
 		if (isDir) { // 读取列表
 			showDirectory(req, res, fileLocation);

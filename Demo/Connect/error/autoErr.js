@@ -21,6 +21,8 @@ function logger(req, res, next) {
 
 function errorHandler() {
 	var env = process.env.NODE_ENV || 'development';
+	console.log(env);
+	
 	return function (err, req, res, next) {
 		res.statusCode = 500;
 		switch (env) {

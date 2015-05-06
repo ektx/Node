@@ -16,6 +16,9 @@
 	5.http://localhost:3000
 	  或是 http://localhost:3000/admin/users
 
+	6.认证方法:
+	终端: curl --user tobi:ferret http://localhost:3000/admin/users
+
 	关闭方法：
 	1.终端
 	2.ctrl + c
@@ -44,21 +47,21 @@ function authenticateWithDatabase(user, pass, callback) {
 
 function restrict(req, res, next) {
 	var authorization = req.headers.authorization;
-	// console.log(authorization);
-	// if (!authorization) return next(new Error('Unauthorized'));
+	console.log(req.headers);
+	if (!authorization) return next(new Error('Unauthorized From Node.js'));
 
-	// var parts = authorization.split(' ');
-	// var scheme = parts[0];
-	// var auth = new Buffer(parts[1], 'base64').toString().split(':');
-	// console.log(auth);
-	// var user = auth[0];
-	// var pass = auth[1];
+	var parts = authorization.split(' ');
+	var scheme = parts[0];
+	var auth = new Buffer(parts[1], 'base64').toString().split(':');
+	console.log(auth);
+	var user = auth[0];
+	var pass = auth[1];
 
-	// authenticateWithDatabase(user, pass, function(err) {
-	// 	if (err) return next(err);
+	authenticateWithDatabase(user, pass, function(err) {
+		if (err) return next(err);
 
 		next();
-	// })
+	})
 }
 
 // 路由admin请求
