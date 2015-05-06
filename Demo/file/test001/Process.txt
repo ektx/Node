@@ -1,0 +1,5 @@
+node.js(API解读) - process
+
+process.cwd()  当前运行工程目录【当前node命令运行目录】。
+
+http://snoopyxdy.blog.163.com/blog/static/60117440201192841649337/
