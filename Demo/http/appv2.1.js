@@ -162,6 +162,7 @@ function sendFile(res, filePath) {
 				200, 
 				{'Content-Type': mime.lookup(path.basename(filePath))}
 			);
+			console.log('-> ' + mime.lookup(path.basename(filePath)))
 			res.end(file);
 		}
 	})
@@ -203,7 +204,7 @@ http.createServer(function(req, res) {
 	i++;
 	console.log(i + ': '+ pathname);
 	serverStatic(req, res, pathname);
-}).listen(8888, function() {
+}).listen(8880, function() {
 	console.log('Welcome to Dev');
 	console.log('Server runing at localhost:8888 - ');
 	console.log('    __  __  _  _    __      __\n    ||\\//|  \\\\//   /  \\\\   (/_\n    || v |   ||    \\__//   __/)')

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+</head>
+<body>
+<video preload="yes" loop contrils="true" id="video" width="400" height="300"
+	poster="macAir.jpg">
+	<source src="video/ipadair.mp4" type="video/mp4">
+</video>
+<button id="play">PLAY</button>
+</body>
+</html>
+	<script type="text/javascript">
+	function init() {
+		var myVideo = document.getElementById('video');
+		myVideo.addEventListener('ended', loopVideo, false)
+	};
+
+	function loopVideo() {
+		var myVideo = document.getElementById('video');
+		myVideo.play()
+	}
+
+	var myVideo = document.getElementById('video');
+	document.getElementById('play').onclick = function() {
+			myVideo.play();
+			alert('1')
+		};
+
+
+	</script>
