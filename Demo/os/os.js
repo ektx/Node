@@ -45,5 +45,5 @@ http.createServer(function(req, res) {
 
 	res.end('\nHello World!\n');
 	
-}).listen(4000, console.log('Server runing at localhost:3000'));
+}).listen(4000, console.log('Server runing at localhost:4000'));
 
