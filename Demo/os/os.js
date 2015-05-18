@@ -1,4 +1,8 @@
 // http://nodejs.org/api/os.html
+/*
+	返回服务器配置信息
+
+*/
 var http = require('http');
 var os = require('os');
 
