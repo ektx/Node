@@ -1,7 +1,8 @@
 var http = require('http');
 
 function getClientIP(req) {
-	var thisIP =  req.headers['x-forwarded-for'] ||
+	var thisIP;
+	return thisIP =  req.headers['x-forwarded-for'] ||
 				  req.connection.remoteAddress ||
 				  req.socket.remoteAddress ||
 				  req.connection.socket.remoteAddress;
@@ -11,7 +12,7 @@ function getClientIP(req) {
 http.createServer(function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/plain'});
 	getClientIP(req);
-	res.end('Hello World!\n');
+	res.end('Hello World!\n'+getClientIP(req));
 	
 }).listen(3000);
 console.log('Server runing at localhost:3000');
