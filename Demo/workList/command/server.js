@@ -4,12 +4,12 @@
 	将Server.js模块化，在其它需要的地方引用它
 
 	@auther:  zwl <ektx1989@gmail.com>
-	@date:    2014-11-13
+	@date:    2015-6-1
 
 	使用方法：
 	1.打开终端
 	2.进入本目录
-	3.运行node server.js add或list来查看文档
+	3.运行 node/iojs server.js add '测试文字' 或 list 来查看文档
 
 **/
 
@@ -17,6 +17,7 @@ var fs = require('fs');
 var path = require('path');
 
 // 去除node server.js, 得到命令行
+// console.log(process)
 var args = process.argv.splice(2);
 
 // 得到命令。如node server.js list,得到list
@@ -24,9 +25,11 @@ var command = args.shift();
 
 // 合并剩余的参数
 var taskDescription = args.join(' ');
+// console.log('taskDescription:'+taskDescription)
 
 // 根据当前目录解析数据库相对路径
 var file = path.join(process.cwd(), '/tasks');
+// console.log('file:'+file);
 
 switch (command) {
 	case 'list':
@@ -38,7 +41,7 @@ switch (command) {
 		break;
 
 	default:
-		console.log('Usage: ' + process.argv[0] + ' list|add [taskDescription]');
+		console.log('Usage: ' + process.argv[0] + ' list|add "taskDescription"');
 };
 
 function loadOrInitializeTaskArray(file, cb) {
