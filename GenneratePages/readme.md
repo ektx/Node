@@ -10,13 +10,13 @@
 2. node make.js
 
 
-## 文件说明
+## 文件说明  
 
-GenneratePages 主目录
- |----- make.js  主程序
- |----- html     生成的静态页面
- |----- node_module  包
- |----- public   模板文件/开发环境
-      |----- parts  ejs部件存放区,这里的内容不会被生成 
+GenneratePages 主目录  
+ |----- make.js  主程序  
+ |----- html     生成的静态页面  
+ |----- node_module  包  
+ |----- public   模板文件/开发环境  
+      |----- parts  ejs部件存放区,这里的内容不会被生成   
 
 * 使用时请保持以上基本文件存在
