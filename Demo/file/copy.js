@@ -33,6 +33,8 @@ var copy = function( src, dst ){
                 }
                 // 如果是目录则递归调用自身
                 else if( st.isDirectory() ){
+                    console.log('_src:' + _src)
+                    console.log('_dst:' + _dst)
                     Exists( _src, _dst, copy );
                 }
             });
@@ -100,18 +102,19 @@ function checkFile(__url) {
     
 }
 
-var args = process.argv.splice(2);
+// var args = process.argv.splice(2);
 
-var command = args.shift();
+// var command = args.shift();
 
-var __url = __dirname+'/'+command;
-var __CURL = '';
-var i = '';
-console.log('command:'+__url);
+// var __url = __dirname+'/'+command;
+// var __CURL = '';
+// var i = '';
+// console.log('command:'+__url);
 
-checkFile(__url)
+// checkFile(__url)
 // 复制目录
-// exists( __dirname+'/'+command, __dirname+'/'+command +' 副本', copy );
+var command = 'test';
+Exists( __dirname+'/'+command, __dirname+'/'+command +' 副本', copy );
 
 
 
