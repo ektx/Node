@@ -16,6 +16,7 @@ var fs = require('fs');
 var app = express();
 var root = __dirname + '/public';
 var i = 0;
+var lost = [];
 
 app.set('views', root);
 // 设置默认文件为 ejs 
@@ -37,10 +38,13 @@ function readFile(path, cPath) {
 			checkFile(files[i], _src, _crc);
 		}
 	});
-}
+};
+
 
 var copyPath = __dirname + '/html';
 readFile(root, copyPath)
+
+
 // 处理文件类型
 function checkFile(fileName, _url, _curl) {
 
@@ -59,10 +63,21 @@ function checkFile(fileName, _url, _curl) {
 			}
 			// 其它类型文件一致原样输出
 			else {
-				var readS = fs.createReadStream(_url);
-				var writeS = fs.createWriteStream(_curl);
+				// 在输出时否有同样名的文件
+				// 主要为了解决 ejs 在生成之后产生新的html文件
+				// 此时有移动文件与生成文件重名导致生成的文件混乱
+				fs.exists(_curl, function(exists) {
+					if (exists && fileName.indexOf('html') > -1) {
+						console.log('x - ' + fileName);
 
-				readS.pipe(writeS);
+					} else {
+						var readS = fs.createReadStream(_url);
+						var writeS = fs.createWriteStream(_curl);
+
+						readS.pipe(writeS);
+					}
+				});
+				 
 			}
 		}
 		// 是文件夹
@@ -74,7 +89,8 @@ function checkFile(fileName, _url, _curl) {
 		}
 		count(fileName);
 	})
-}
+};
+
 
 // 生成静态文件  -  存放在public下的文件 
 function outputs(fileName) {
@@ -84,14 +100,18 @@ function outputs(fileName) {
 	});
 };
 
+
 // 创建文件夹
 function createFolders(src, curl) {
 	fs.mkdir(curl, function() {
 		readFile(src, curl)
 	})
-}
+};
 
+
+// 统计生成文件个数
 function count(fileName) {
 	i++;
 	console.log(i + ' - ' +fileName);
 }
+
