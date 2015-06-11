@@ -1,5 +1,5 @@
-var express = require('express');
-var session = require('express-session');
+var express = require('../node_modules/express');
+var session = require('../node_modules/express-session');
 
 var app = express();
 
@@ -7,7 +7,9 @@ app.use(session({
 	secret:'Keyboard cat',
 	cookie: {
 		maxAge: 60000
-	}
+	},
+	resave: false,
+	saveUninitialized: true
 }));
 
 
