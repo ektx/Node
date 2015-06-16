@@ -3,4 +3,4 @@
 var rocker = require('./rocker.js');
 
 rocker.name();
-rocker.age();
+rocker.age(23);
