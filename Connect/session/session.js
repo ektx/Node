@@ -5,6 +5,7 @@ var app = express();
 
 app.use(session({
 	secret:'Keyboard cat',
+	name: 'sessionTest',
 	cookie: {
 		maxAge: 60000
 	},
@@ -20,6 +21,8 @@ app.use(function(req, res, next) {
 		res.setHeader('Content-Type', 'text/html; charset=utf-8');
 		res.write('<p>views: ' + sess.views + '</p>');
 		res.write('<p>express in: ' + (sess.cookie.maxAge / 1000) + 's</p>');
+		// 返回session中数据
+		res.write(JSON.stringify(req.session, '', '\t'))
 		res.end();
 	} else {
 		sess.views = 1;
@@ -27,4 +30,4 @@ app.use(function(req, res, next) {
 	}
 });
 
-app.listen(3000)
+app.listen(3000);
