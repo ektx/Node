@@ -15,9 +15,9 @@
 
 GenneratePages 主目录  
  ├----- make.js  主程序  
- ├----- html     生成的静态页面
+ ├----- html     生成的静态页面  
  ├----- lib 服务器开发文件  
- ├----- Doc 说明文档 
+ ├----- Doc 说明文档   
  ├----- node_module  包  
  └----- public   模板文件/开发环境  
       └----- parts  ejs部件存放区,这里的内容不会被生成   
