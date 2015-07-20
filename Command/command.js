@@ -20,3 +20,9 @@
 	var command = args.shift();
 	// $ iojs command.js hello
 	console.log(command); // hello
+
+	// 进程结束或退出时,输出
+	// 无法与 listen同时使用
+	process.on('exit', function() {
+		console.log('Bye')
+	})
