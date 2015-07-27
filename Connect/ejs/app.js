@@ -17,11 +17,30 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function(req, res) {
-	// 返回 demo.ejs
-	res.render('demo');
+app.get('/favicon.ico', function(req, res) {
+	res.end();
+	return
 })
 
+// app.get('/', function(req, res) {
+
+// 	// 返回 demo.ejs
+// 	res.render('demo');
+// })
+// app.get('/book', function(req, res) {
+// 	res.render('book.jade')
+// })
+
+app.get('*', function(req, res) {
+	var _path = decodeURI(req.path)
+	console.log(_path)
+
+	if (_path === '/') {
+		res.render('demo')
+	} else {
+		res.render('abc/book.jade')
+	}
+})
 
 http.createServer(app).listen(3000, function() {
 	console.log('Work...')
