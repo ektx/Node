@@ -24,8 +24,8 @@ var https = require('https');
 var fs = require('fs');
 
 var options = {
-	key: fs.readFileSync('./key2.pem'),
-	cert:fs.readFileSync('./key2.cert.pem')
+	key: fs.readFileSync('./zios.pem'),
+	cert:fs.readFileSync('./zios-cert.pem')
 };
 
 https.createServer(options, function(req, res) {
