@@ -3,7 +3,7 @@ var ansi = require('ansi'),
 
 cursor
 	.red()							// 设置文字颜色为红色
-	.bg.grey()						// 设置背景是灰色
+	.bg.hex('#FFFF00')						// 设置背景是灰色
 	.write('Hello World!')			// 输出内容
 	.bg.reset()						// 恢复背景颜色
 									// 这里你可以添加你自己的内容

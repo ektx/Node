@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery.qrcode.min.js"></script>
+</head>
+<body>
+	<div><%= qrcode %></div>
+</body>
+
+<script>
+	
+$(function() {
+	var text = '<%= qrcode %>';
+
+	$('div').qrcode({
+		'size': 200,
+		'color': '#3a3',
+		'text': text
+	});
+
+
+	setInterval(function() {
+		$.ajax({
+			url: '/isLogin'
+		})
+		.done(function(data) {
+			if (data.success) {
+				console.log("success");
+			}
+		})
+		.fail(function() {
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
+		});
+		
+	}, 1000)
+	
+})
+
+</script>
+</html>

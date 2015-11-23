@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/jquery-1.11.3.min.js"></script>
+
+</head>
+<body>
+	<input type="text" value="kings">
+	<input type="text">
+	<button>确认</button>
+</body>
+<script>
+$(function() {
+	$('button').click(function() {
+		var name = $('input:eq(0)').val();
+		var code = $('input:eq(1)').val();
+
+		$.ajax({
+			url:'/go',
+			type: 'post',
+			data: {name: name, code: code},
+			dataType: 'json'
+		})
+		.done(function() {
+			console.log('ok')
+		})
+	})	
+})
+</script>
+</html>
