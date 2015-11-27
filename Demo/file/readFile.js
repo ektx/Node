@@ -11,7 +11,7 @@ var fs = require('fs');
 
 
 fs.readFile('fs.js', 'utf-8', function(err, data) {
-	if (err) return next(err);
+	if (err) return console.log(err);
 
 	console.log(data)
 })
