@@ -3,10 +3,10 @@ var fs = require('fs');
 fs.readFile('css/layout.css', 'utf-8', function(err, data) {
 	if (err) throw err;
 
-	console.log('Css 内容:' + data);
+	// console.log('Css 内容:' + data);
 	var outputCss = '@charset \'utf-8\';\n';
-	var RegImport = new RegExp("(\\w+\\/?)*.css", "gi");
-	var importCss = data.match(RegImport);
+	var RegImport = new RegExp("(\\w+\\/?)*.css(?=')", "gi");
+	var importCss = data.match(RegImport) || [];
 
 	console.log('@import 引用样式有:' + importCss + '\n个数有:'+importCss.length);
 
@@ -35,7 +35,7 @@ fs.readFile('css/layout.css', 'utf-8', function(err, data) {
 				if (i == importCss.length - 1) {
 
 					// 输出整合样式
-					console.log('整合样式:' + outputCss);
+					// console.log('整合样式:' + outputCss);
 
 					// 压缩css
 					// \t 去换行
@@ -43,7 +43,7 @@ fs.readFile('css/layout.css', 'utf-8', function(err, data) {
 					// \/\*.+\*\/ 去注释
 					var minOutputCss = outputCss.replace(/(\t|\s{2,}|\/\*.+\*\/|\;(?=\t*\}))/g, '');
 					minOutputCss = minOutputCss.replace(/;(?=})/g, '');
-					console.log('整合样式:' + outputCss);
+					// console.log('整合样式:' + outputCss);
 
 
 					fs.writeFile('css/layout-com.css', outputCss, 'utf8', function(err){
@@ -59,6 +59,8 @@ fs.readFile('css/layout.css', 'utf-8', function(err, data) {
 				}
 			})
 		})(i)
+	} else {
+		
 	}
 
 
