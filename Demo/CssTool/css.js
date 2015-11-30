@@ -4,7 +4,7 @@ fs.readFile('css/layout.css', 'utf-8', function(err, data) {
 	if (err) throw err;
 
 	// console.log('Css 内容:' + data);
-	var outputCss = '@charset \'utf-8\';\n';
+	var outputCss = '@charset "utf-8";\n';
 	var RegImport = new RegExp("(\\w+\\/?)*.css(?=')", "gi");
 	var importCss = data.match(RegImport) || [];
 
@@ -16,7 +16,7 @@ fs.readFile('css/layout.css', 'utf-8', function(err, data) {
 			var cssPath = 'css/'+importCss[i];
 			console.log(cssPath);
 
-			fs.stat(cssPath, function(err, csserr) {
+			fs.stat(cssPath, function(err, css) {
 				var css = '';
 
 				if (err) { 
@@ -24,7 +24,7 @@ fs.readFile('css/layout.css', 'utf-8', function(err, data) {
 				} else {
 					css = fs.readFileSync(cssPath, 'utf-8');
 
-					css = css.replace(/@charset\s'utf-8';/i, '');
+					css = css.replace(/@charset\s('|")utf-8('|");/i, '');
 					
 					outputCss += css;
 				}
@@ -40,9 +40,26 @@ fs.readFile('css/layout.css', 'utf-8', function(err, data) {
 					// 压缩css
 					// \t 去换行
 					// \s{2,} 去出现2次以上的空格
-					// \/\*.+\*\/ 去注释
-					var minOutputCss = outputCss.replace(/(\t|\s{2,}|\/\*.+\*\/|\;(?=\t*\}))/g, '');
-					minOutputCss = minOutputCss.replace(/;(?=})/g, '');
+					// \/\*(.|\r\n|\n)*?\*\/ 去注释
+					/*
+						\;(?=(\n|\r\n)*?\}) 去样式中最后一个 ;
+
+						.hummer-app {
+							position: relative;
+							overflow: hidden;
+						}
+
+					*/
+					/* 
+						\s(?=\{) 去 .classname { .. }中的{前空格或是
+								 去 @keyframes animate { to { }} {前的空格
+
+						\s(?=\() 去除(前的空格
+					*/
+					var minOutputCss = css.replace(/(\t|\s{2,}|\/\*(.|\r\n|\n)*?\*\/|\;(?=(\n|\r\n)*?\})|\s(?=\{)|\s(?=\())/g, '');
+
+					// 去 : 后的空格
+					minOutputCss = minOutputCss.replace(/:\s/g, ':');
 					// console.log('整合样式:' + outputCss);
 
 
