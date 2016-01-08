@@ -1,5 +1,5 @@
 
-var module1 = require('./module1.js');
+var module1 = require('./module/module1.js');
 // var module1 = name;
 
 // 让模块工作
