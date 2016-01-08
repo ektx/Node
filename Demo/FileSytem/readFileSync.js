@@ -1,5 +1,10 @@
 var fs = require('fs');
 
-var fileInfo = fs.readFileSync(__dirname+'/readFileSync.js', 'utf8')
+try {
+
+	var fileInfo = fs.readFileSync(__dirname+'/readFileSyn.js', 'utf8')
+} catch (err) {
+	console.log(err)
+}
 
 console.log(fileInfo)
