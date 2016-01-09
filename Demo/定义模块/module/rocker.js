@@ -5,3 +5,4 @@ exports.name = function() {
 exports.age = function(age) {
 	console.log('age: '+age);
 }
+
