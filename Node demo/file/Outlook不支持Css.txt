@@ -1,0 +1,150 @@
+﻿Outlook不支持Css
+1. UP 功能强大的工具为“防弹电子邮件背景图像”（VML的Outlook 2007/2010/2013，和HTML / CSS的Outlook 2000/2003的，Gmail的， 作为一个为例：
+ <div style="background-color:#f6f6f6;">
+ <!--[if gte mso 9]>
+ <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+ <v:fill type="tile" src=" CodeGo.net  color="#f6f6f6"/>
+ </v:background>
+ <![endif]-->
+ <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0">
+ <tr>
+  <td valign="top" align="left" background=" CodeGo.net 
+
+和
+  </td>
+ </tr>
+ </table>
+</div>
+
+为了有指定的背景图像完整的电子邮件的身体。 此链接帮助矢量标记语言（VML） MSDN。 
+
+2. 你不能一个背景图片添加到html通讯是在Outlook中查看。它只是不会工作，因为他们忽略了属性。 你只能有块颜色（background-color）后面的文本。 Outlook不支持以下CSS：
+azimuth
+background-attachment
+background-image
+background-position
+background-repeat
+border-spacing
+bottom
+caption-side
+clear
+clip
+content
+counter-increment
+counter-reset
+cue-before, cue-after, cue
+cursor
+display
+elevation
+empty-cells
+float
+font-size-adjust
+font-stretch
+left
+line-break
+list-style-image
+list-style-position
+marker-offset
+max-height
+max-width
+min-height
+min-width
+orphans
+outline
+outline-color
+outline-style
+outline-width
+overflow
+overflow-x
+overflow-y
+pause-before, pause-after, pause
+pitch
+pitch-range
+play-during
+position
+quotes
+richness
+right
+speak
+speak-header
+speak-numeral
+speak-punctuation
+speech-rate
+stress
+table-layout
+text-shadow
+text-transform
+top
+unicode-bidi
+visibility
+voice-family
+volume
+widows
+word-spacing
+z-index
+
+来源： 
+
+3. 不是所有的HTML和CSS支持的Microsoft Office产品时，Outlook尤其是，看看这里就支持参考为你可以和'在Outlook中时呈现HTML。 具体来说，从该链接它并没有说明backgroundCSS属性的支持div你可能有一个img并做哈克层次感。 请注意，在你的第二个例子中，你有一个报价不匹配，这将不利于任何。 最后一点，我只是在各地提供的链接是Outlook的HTML和CSS验证工具-你可以尝试运行，对你的通讯的标记，看看它是否给你任何建议/替代品。 
+
+4. 我正好有这个问题，几个月前，当工作在一个所见即所得的编辑器，电子邮件的Outlook只支持背景图片，如果他们应用到<body>标签-任何其他的，它会失败。 最后，我找到的唯一解决方法是<div>对于文本输入，然后在内容提交过程中，我解雇了一个AJAX请求与<div>的内容，其中写道文本到我们的标题图片的空白版本的PHP脚本，保存该文件并返回它的（唯一生成的）我的Javascript移除<div>并添加<img>返回在src属性。 您可以从得到的所有imagecreatefrompng()在PHP文档网站页面。 
+
+5. 背景图像是无法在Outlook的支持。 你有一个形象和它背后的相对或绝对位置定位。 
+
+6. 这里有解释： 
+
+7. 我能够做到这一点的唯一途径就是通过这个代码（TD表）。我在Outlook客户2010进行测试。我也可以通过Webmail客户端测试，它为两个。 你所要做的唯一的事情就是改变your_image.jpg（也有本作的图像两个实例确保你同时更新您的代码）和＃your_color。
+<td bgcolor="#your_color" background="your_image.jpg">
+
+<!--[if gte mso 9]>
+
+<v:image xmlns:v="urn:schemas-microsoft-com:vml" id="theImage" style='behavior: url(#default#VML); display:inline-block; position:absolute; height:300px; width:600px; top:0; left:0; border:0; z-index:1;' src="your_image.jpg"/>
+
+<v:shape xmlns:v="urn:schemas-microsoft-com:vml" id="theText" style='behavior: url(#default#VML); display:inline-block; position:absolute; height:300px; width:600px; top:-5; left:-10; border:0; z-index:2;'>
+
+<![endif]-->
+
+<p>Text over background image.</p>
+
+<!--[if gte mso 9]>
+
+</v:shape>
+
+<![endif]-->
+
+</td>
+
+源 
+
+8. 背景DOES在Outlook中工作，但只有在<body>标记的电子邮件。它不会在个别工作<td>的，只有整个电子邮件。 更新：另外，您的，让您 背景图像添加到个人页面在Outlook中。 这适用于大多数客户端包括Outlook：
+<body style="background-image: url('img.jpg');">
+<table width="100%" background="img.jpg">
+
+下面是在所有主要的电子邮件客户端包括Outlook工作的全部代码。它的背景图像设置回退到背景在100％宽度的表格。
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" " CodeGo.net 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+</head>
+ <body style="margin: 0px; padding: 0px; background-image: url(' CodeGo.net  background-color: #0D679C; background-position: top center;" bgcolor="#0D679C">
+ <!-- BODY FAKE PANEL -->
+ <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" background=" CodeGo.net 
+  <tr>
+  <td>
+  <!-- CENTER FLOAT -->
+   <table width="800" border="0" valign="top" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+   <tr>
+    <td height="1000" align="center" valign="middle">
+    Center panel
+    </td>
+   </tr>
+   </table>
+  <!-- /CENTER FLOAT -->
+  </td>
+  </tr>
+ </table>
+ <!-- /BODY FAKE PANEL -->
+ </body>
+</html>
+

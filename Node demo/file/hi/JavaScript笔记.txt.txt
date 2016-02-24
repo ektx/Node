@@ -1,0 +1,26 @@
+1.在将页面的 MIME 类型指定为"application/xhtml+xml"的情况下会触发
+XHTML 模式。并不是所有浏览器都支持以这种方式提供 XHTML 文档。
+
+2.XHTML中js运行方法：
+<script type="text/javascript">
+//<![CDATA[
+ function compare(a, b) {
+ if (a < b) {
+ alert("A is less than B");
+ } else if (a > b) {
+ alert("A is greater than B");
+ } else {
+ alert("A is equal to B");
+ }
+ }
+//]]>
+</script> 
+
+
+3.开启Js的严格模式：
+"use strict";
+
+4、DOMContentLoaded
+DOMContentLoaded 当所有DOM解析完以后会触发这个事件
+功能上类似 $(document).read(function(){...})
+window.addEventListener("DOMContentLoaded", function() {
