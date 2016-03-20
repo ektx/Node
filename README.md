@@ -12,3 +12,9 @@ Node.js学习案例与笔记
 
 功能是把ejs模板文件生成静态页面
 
+
+
+## 参考
+
+[npm模块管理器](http://javascript.ruanyifeng.com/nodejs/npm.html#toc0)
+
