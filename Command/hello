@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+/*
+	使用方式:
+	1.修改文件权限 chmod 755
+	2.测试 
+	./hello man => hello man
+	./hello boy => hello boy
+
+
+*/
+console.log('hello ', process.argv[2]);
