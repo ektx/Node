@@ -1,0 +1,14 @@
+{
+	// 名称
+	"name": "nodefolder",
+	"version": "0.0.1", // 版本
+	"description": "显示文件夹下所有文件", // 说明
+	"perferGlobal": "true",
+	"bin": {
+		"nf": "nodefolder2.js" // 命令
+	},
+	"author": "ektx",
+	"engines": {
+		"node": "*" 
+	}
+}
