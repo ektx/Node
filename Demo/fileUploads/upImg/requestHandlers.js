@@ -30,7 +30,7 @@ function upload(response, request) {
 		console.log("parsing done" + JSON.stringify(files,'','\t'));
 
 		fs.renameSync(files.upload.path, "./tmp/kings.png");
-		response.writeHead(200, {"Content-Type": "text/html"});
+		response.writeHead(200, {"Content-Type": "text/html; charset=utf-8"});
 		response.write("<h2>提交的图片是：</h2>");
 		// 得到指定文本
 		response.write("<img src='/show' />");
