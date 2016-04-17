@@ -1,0 +1,17 @@
+#! /usr/bin/env node
+/*
+	child_process 子进程方式
+
+	使用方式:
+	1.修改文件权限: chmod 755 helloWithShellJs
+	2.运行
+	./helloWithShellJs kings
+	=> hello kings
+	
+	参考:
+	[shellJs](https://github.com/shelljs/shelljs)
+*/
+var name = process.argv[2];
+var shell = require('shelljs');
+
+shell.exec('echo hello '+ name)

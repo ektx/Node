@@ -103,15 +103,20 @@ nf
 ```
 
 - Mac 中如果,npm link 失败了,可以添加 sudo npm link
+- 或是使用 `sudo chown -R $(whoami) ~/.npm `  [stackoverflow](http://stackoverflow.com/questions/16151018/npm-throws-error-without-sudo)
 
 #### 删除
 
 - 文件删除:
   - Mac 下,直接去/usr/local/lib/node_modules目录下,删除替身文件
+- 使用命令行删除(推荐)
+  - `npm unlink -g nodefolder`
 
 
 
 ## 参考
+[NPM](https://docs.npmjs.com/getting-started/what-is-npm)
+
 [Node.js 命令行程序开发教程](http://www.ruanyifeng.com/blog/2015/05/command-line-with-node.html)
 
 [用node.js开发命令行工具](http://binbinliao.com/programming/commandline-nodejs.html)

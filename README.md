@@ -14,7 +14,16 @@ Node.js学习案例与笔记
 
 
 
+## NPM
+
+#### 发布
+
+```shell
+npm publish
+```
+
+
+
 ## 参考
 
 [npm模块管理器](http://javascript.ruanyifeng.com/nodejs/npm.html#toc0)
-
