@@ -88,7 +88,7 @@ __说明__
 - version: 版本
 - description: 说明
 - perferGlobal: 
-- bin: 启动命令集
+- <font color="red">bin: 启动命令集</font>
 - author: 作者
 - engines: 环境
 
