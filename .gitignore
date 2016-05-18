@@ -3,4 +3,6 @@
 /source-map
 /UglifyJS
 /GenerateTemHTML
+/iMkdirs
+/iTinify
 */node_modules
