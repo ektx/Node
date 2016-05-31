@@ -136,6 +136,8 @@ const logs = {
 
 	show: function() {
 		console.log(this.outHTML.join(''))
+
+		this.outHTML = []
 	}
 }
 
