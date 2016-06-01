@@ -5,7 +5,10 @@
 */
 
 const logs = {
-	outHTML : [],
+	outHTML : {
+		headHTML: '',
+		listHTML: ''
+	},
 
 	head : function(obj) {
 		obj.width = obj.width || 20;
