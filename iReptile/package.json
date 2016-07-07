@@ -1,0 +1,22 @@
+{
+  "name": "ireplite",
+  "version": "0.0.1",
+  "description": "爬虫!!!",
+  "bin": {},
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "nodejs",
+    "replite! 爬虫!"
+  ],
+  "author": {
+    "name": "ektx",
+    "email": "530675800@qq.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^0.20.0"
+  }
+}
