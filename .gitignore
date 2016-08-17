@@ -9,3 +9,4 @@
 /SVNPath
 /WebRTC
 *node_modules
+*.DS_Store
