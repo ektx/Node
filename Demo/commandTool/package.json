@@ -1,0 +1,21 @@
+{
+  "name": "command-tool",
+  "version": "0.0.1",
+  "description": "A command-line tool for craeate files",
+  "main": "index.js",
+  "bin": {
+    "tool": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "command",
+    "line",
+    "tool",
+    "nodejs",
+    "shell"
+  ],
+  "author": "ektx",
+  "license": "MIT"
+}
