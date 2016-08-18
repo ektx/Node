@@ -20,12 +20,15 @@ program.arguments('<file>')
 		// console.log(fileStream)
 
 		var barOptions = {
+			title: 'sklklkl',
+			complete: '\u001b[42m \u001b[0m',
+			incomplete: '\u001b[41m \u001b[0m',
 			width: 30,
 			total: fileSize,
-			clear: true
+			clear: false
 		};
 
-		var bar = new progressBar(' uploading [:bar] :percent :etas', barOptions);
+		var bar = new progressBar(' 上传文件进度 [:bar] :total :percent :etas', barOptions);
 
 		fileStream.on('data', function(chunk) {
 			bar.tick(chunk.length)
