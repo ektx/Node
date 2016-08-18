@@ -4,14 +4,15 @@ var co = require('co');
 var request = require('superagent');
 var prompt = require('co-prompt');
 var program = require('commander');
+var chalk = require('chalk');
 
 program.arguments('<file>')
 .option('-u, --username <username>', 'The user to authenticate as')
 .option('-p, --password <password>', 'The user\'s password')
 .action(function(file) {
 	co(function *() {
-		var username = yield prompt('username: ');
-		var password = yield prompt.password('password: ');
+		var username = yield prompt(chalk.green('username: '));
+		var password = yield prompt.password(chalk.green('password: '));
 
 		request.post('http://localhost:3000/profile')
 				.auth(username, password)
@@ -20,7 +21,7 @@ program.arguments('<file>')
 				.field('password', password)
 				.end(function(err, res) {
 					if (!err && res.ok) {
-						console.log('Status: %s', res.status);
+						console.log(chalk.bold.cyan('Status:') + res.status);
 						console.log('Text: %s', res.text);
 						process.exit(0)						
 					}
@@ -34,7 +35,7 @@ program.arguments('<file>')
 						errorMessage = res.text;
 					}
 
-					console.error(errorMessage);
+					console.error(chalk.red(errorMessage));
 					process.exit(1)
 				})
 	});
