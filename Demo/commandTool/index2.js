@@ -15,13 +15,8 @@ program.arguments('<file>')
 		var username = yield prompt(chalk.green('username: '));
 		var password = yield prompt.password(chalk.green('password: '));
 
-		// var fileSize = fs.statSync(file).size;
-		var fileSize = 0;
-		file.forEach(function(val) {
-			fileSize += fs.statSync(val).size;
-			var fileStream = fs.createReadStream(file);
-		});
-		
+		var fileSize = fs.statSync(file).size;
+		var fileStream = fs.createReadStream(file);
 		// console.log(fileStream)
 
 		var barOptions = {
