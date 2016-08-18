@@ -19,9 +19,23 @@ program.arguments('<file>')
 				.field('name', username)
 				.field('password', password)
 				.end(function(err, res) {
-					// var link = res.body.links.html.href;
-					console.log('Status: %s', res.status);
-					console.log('Text: %s', res.text);
+					if (!err && res.ok) {
+						console.log('Status: %s', res.status);
+						console.log('Text: %s', res.text);
+						process.exit(0)						
+					}
+
+					var errorMessage;
+					if (res && res.status === 401) {
+						errorMessage = 'Authentication failed! Bad username/password';
+					} else if (err) {
+						errorMessage = err;
+					} else {
+						errorMessage = res.text;
+					}
+
+					console.error(errorMessage);
+					process.exit(1)
 				})
 	});
 })
