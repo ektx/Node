@@ -33,7 +33,7 @@ program.arguments('<file>')
 			bar.tick(chunk.length)
 		});
 
-		request.post('http://localhost:3000/profile')
+		request.post('http://localhost:3000/profiles')
 				.auth(username, password)
 				.attach('avatar', fileStream)
 				.field('name', username)
