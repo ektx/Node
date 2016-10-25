@@ -43,7 +43,7 @@ program.arguments('<file> <file1>')
 			.post('http://localhost:3000/profile')
 			// .auth(username, password)
 			.attach('avatar', fileStream)
-			// .attach('avatar', fileStream)
+			.attach('avatar', fileStream)
 			// .field('name', username)
 			// .field('password', password)
 			.end(function(err, res) {
