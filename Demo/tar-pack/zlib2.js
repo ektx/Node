@@ -12,8 +12,7 @@ let packer = tar.Pack({ noProprietary: true })
 	console.log('Packed')
 });
 
-
-fstream.Reader( __dirname)
+fstream.Reader( 'G:/iServer/Github/iServer' )
 	.on('error', (err)=>{
 		console.log('---',err)
 	})
