@@ -5,8 +5,10 @@ if (!which('git')) {
 	exit(1);
 }
 
-if (exec('git clone /Users/ZWL/repositories/a.git').code !== 0) {
-	echo('Error! Git clone failed');
+let gitProcess = exec('git clone /Users/ZWL/repositories/c.git');
+
+if (gitProcess.code !== 0) {
+	echo('Error! Git clone failed', gitProcess.stderr);
 	exit(1)
 } else {
 	echo('Git clone done.')
