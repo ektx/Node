@@ -1,0 +1,16 @@
+{
+  "name": "oauth",
+  "version": "0.0.1",
+  "description": "oauth test",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "oauth"
+  ],
+  "author": "ektx",
+  "license": "MIT",
+  "dependencies": {
+    "socket.io": "^1.7.0",
+    "superagent": "^3.0.0"
+  }
+}
