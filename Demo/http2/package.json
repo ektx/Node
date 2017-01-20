@@ -1,0 +1,22 @@
+{
+  "name": "http2",
+  "version": "1.0.0",
+  "description": "express node-spdy node http2 demo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "node-spdy",
+    "node",
+    "http2",
+    "demo"
+  ],
+  "author": "ektx",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "spdy": "^3.4.4"
+  }
+}
