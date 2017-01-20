@@ -18,10 +18,6 @@ const allow = (res) => {
   res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS")
 }
 
-// app.set('views', path.join(__dirname, 'views'))
-// app.set('view engine', 'ejs')
-// app.use(express.static(path.join(__dirname, 'static')))
-
 app.get('/', (req, res)=> {
 
   console.log(req.url)
@@ -43,7 +39,7 @@ app.get('/option/?', (req, res) => {
     }, delay)
 })
 
-http.createServer(options, app).listen(port, (err) => { // http2服务器端口为1002
+http.createServer(options, app).listen(port, (err) => { 
     if (err) throw new Error(err)
     console.log(`Http 1.x server listening on port ${port}`)
 })
