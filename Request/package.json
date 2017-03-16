@@ -1,0 +1,16 @@
+{
+  "name": "requestdemo",
+  "version": "0.0.1",
+  "description": "demo for request",
+  "main": "getHtml.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ektx",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "multer": "^1.3.0",
+    "request": "^2.81.0"
+  }
+}
