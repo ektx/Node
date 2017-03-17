@@ -1,21 +1,11 @@
 /*
-	终端访问页面功能
+	request 文件上传 Demo
 	---------------------------------
+	使用 node.js request 中间件开发终端文件上传功能
 */
 
-const request = require('request');
+const request = require('../node_modules/request');
 const fs = require('fs');
-const progressbar = require('progress');
-
-let barOptions = {
-	complete: '\u001b[42m \u001b[0m',
-	incomplete: '\u001b[41m \u001b[0m',
-	width: 30,
-	total: fileSize,
-	clear: false
-};
-
-let bar = new progressbar(' 上传文件进度 [:bar] :total :percent :elapseds :etas', barOptions);
 
 let formData = {
 	file: [
@@ -23,10 +13,6 @@ let formData = {
 		fs.createReadStream(__dirname + '/client/2.jpg')
 	]
 }
-
-fileStream.on('data', (chunk)=> {
-	bar.tick(chunk.length)
-})
 
 request.post({
 		url: 'http://localhost:3000/send/',

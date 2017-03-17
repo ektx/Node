@@ -1,4 +1,8 @@
-const r = require('request');
+/*
+	请求Demo
+*/
+
+const r = require('../node_modules/request');
 
 let username = 'ektx';
 let password = '111';

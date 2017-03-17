@@ -1,11 +1,17 @@
-const express = require('express');
-const multer  = require('multer');
+/*
+	
+	文件服务器
+	-------------------------------------
+*/
+
+const express = require('../node_modules/express');
+const multer  = require('../node_modules/multer');
 
 const app = express();
 
 const storage = multer.diskStorage({
 	destination: function(req, file, cb) {
-		cb(null, 'server/file')
+		cb(null, 'file')
 	},
 	filename: function(req, file, cb) {
 		cb(null, file.fieldname + '-' + Date.now())
@@ -20,7 +26,13 @@ app.get('/', (req, res)=> {
 
 
 app.post('/send', upload.array('file', 5), (req, res, next)=> {
-	console.log('Send!')
+	
+	console.log(req.body);
+
+	res.status(200).send({
+		success: true,
+		mes: 'POST successful!'
+	})
 })
 
 
