@@ -1,8 +1,0 @@
-{
-  "name": "proxy-demo",
-  "version": "0.0.1",
-  "description": "http proxy demo",
-  "main": "app.js",
-  "author": "ektx(zwl)",
-  "license": "MIT"
-}

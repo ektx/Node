@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<h1>跨域Demo</h1>
+	
+	<ul>
+		<li>在server 1(4000) 和 server 2(3000) 目录分别启动2个不同端口的服务器</li>
+	</ul>
+
+	<script>
+	let ajax = new XMLHttpRequest();
+	// https 时提醒用户与开发合作
+	// let url  = 'iproxy-url=https://127.0.0.1:3000/data.json';
+
+	// 使用 http 时我们可以简单代理
+	// let url  = 'iproxy-url=http://127.0.0.1:3000/data.json';
+
+	// 测试服务器使用了  Access-Control-Allow-Origin:* 有服务器方法
+	// let url  = 'http://127.0.0.1:3000/data.json';
+	let url  = 'https://127.0.0.1:3000/data.json';
+
+	ajax.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			console.log(this.responseText)
+		}
+	}
+
+	ajax.open('GET', url, true);
+	ajax.send()
+	</script>
+</body>
+</html>
