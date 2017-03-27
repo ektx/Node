@@ -1,9 +1,9 @@
-var http = require('http');
+let http = require('http');
 
-var url = 'http://i.myos.me/';
-var data = '';
+let url = 'http://i.myos.me/';
+let data = '';
 
-var req = http.request(url, function(res) {
+let req = http.request(url, function(res) {
 	res.setEncoding('utf8');
 
 	res.on('data', function(chunk) {
