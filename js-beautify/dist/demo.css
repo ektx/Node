@@ -1,0 +1,54 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+#myCanvas {
+	background: #040714;
+}
+.tip {
+	display: none;
+	height: 124px;
+	border: 2px solid #3fabc8;
+	border-radius: 4px;
+	padding: 0 8px;
+	position: absolute;
+	margin: -130px -25px;
+}
+.tip .title {
+	line-height: 36px;
+	color: #ffc955;
+	font-size: 14px;
+}
+li {
+	list-style: none;
+	line-height: 20px;
+	font-size: 12px;
+}
+li.green {
+	color: #4fff5f;
+}
+li.yellow {
+	color: #ffbc53;
+}
+li.red {
+	color: #f14141;
+}
+li.blue {
+	color: #2cdaff;
+}
+.tip .arrow {
+	position: absolute;
+	border-top: 10px solid #3fabc8;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	bottom: -10px;
+}
+.tip .arrow:after {
+	position: absolute;
+	content: '';
+	border-top: 7px solid #020409;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	top: -10px;
+	left: -7px;
+}
