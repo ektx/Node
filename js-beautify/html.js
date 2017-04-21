@@ -7,10 +7,22 @@ fs.readFile('origin/demo_html.html', 'utf8', function(err, data) {
 	}
 
 	let beautifyResult = beautify_html(data, {
-		indent_size: 4,
-		indent_with_tabs: true,
-		end_with_newline: false,  // 结束时不新起一行
-		indent_inner_html: true
+		"indent_size":"1",
+		"indent_char":"\t",
+		"max_preserve_newlines":"-1",
+		"preserve_newlines":false,
+		"keep_array_indentation":false,
+		"break_chained_methods":false,
+		"indent_scripts":"keep",
+		"brace_style":"expand",
+		"space_before_conditional":false,
+		"unescape_strings":false,
+		"jslint_happy":false,
+		"end_with_newline": false,
+		"wrap_line_length":"0",
+		"indent_inner_html": true,
+		"comma_first":false,
+		"e4x":false
 	})
 
 	console.log( beautifyResult );
