@@ -23,10 +23,10 @@ function myStream (inFile, outFile) {
 			if (/@import/.test(chunk) ) {
 
 				console.log('HAS @import')
-				let cssAdd = chunk.match(/@import\surl\(["|']([\w|.]+)["|']\)/);
+				let cssAdd = chunk.match(/@import.*?.css('|")\);/gi);
 
 
-				console.log('CSS Path:', cssAdd[1]);
+				console.log('CSS includes:', cssAdd);
 				// 设置缓存
 				// cacheData = chunk;
 				
@@ -34,38 +34,19 @@ function myStream (inFile, outFile) {
 				chunk = chunk.replace( /@import.*?.css('|")\);/gi, '' )
 
 				// 读取替换内容的新流
-				getReadStream( __dirname + '/'+ cssAdd[1], rs);
+				// getReadStream( __dirname + '/'+ cssAdd[1], rs);
 
 				// 暂停流的读取
 				// rs.pause()
 
 			}
 			
-			// 有缓存内容
-			if ( cacheData.length > 0 ) {
-				console.log('有缓存内容:')
-				chunk = cacheData.replace(replaceMake, cacheData)
-
-				cacheData = '';
-
-			}
-
 			ws.write( chunk )
 		})
 
 		rs.on('end', function() {
-			// 有缓存内容
-			// if ( cacheData.length > 0 ) {
-			// 	console.log('有缓存内容:')
-			// 	cacheData = cacheData.replace(replaceMake, cacheData);
 
-			// 	cacheData = '';
-
-			// }
-
-			if ( parentRS && cacheData.length == 0 ) {
-				parentRS.resume()
-			}
+			console.log('我已经输出完了呀')
 		})
 
 	}
@@ -78,4 +59,4 @@ function myStream (inFile, outFile) {
 }
 
 
-myStream(__dirname+'/demo.css', __dirname+'/test/apple.css')
+myStream(__dirname+'/demoMin.css', __dirname+'/test/apple.css')

@@ -44,7 +44,7 @@ function s (go) {
 				readS( __dirname + '/'+ cssAdd[1] );
 
 				// 暂停流的读取
-				// rs.pause()
+				rs.pause()
 
 			}
 
