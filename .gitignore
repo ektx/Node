@@ -10,3 +10,7 @@
 /WebRTC
 *node_modules
 *.DS_Store
+*yarn.lock
+
+# SVGO
+/SVGO/output
