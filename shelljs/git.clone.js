@@ -1,5 +1,10 @@
+/*
+	使用 shelljs 来进行代码的 clone
+	----------------------------------------
+*/
 require('shelljs/global');
 
+// 判断你的电脑是否有 git
 if (!which('git')) {
 	echo('Sorry! this script requires git!');
 	exit(1);
