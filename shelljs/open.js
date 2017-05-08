@@ -11,7 +11,10 @@ shell.exec('node --version')
 
 if ( platform === 'darwin') {
 	console.log('Your are Mac OS')
-	shell.exec('open .')
+	// shell.exec('open .')
+
+	// 打开带空格的文件夹 
+	shell.exec('open hello\\ world')
 } 
 else if ( platform === 'linux2' ) {
 	shell.exec('nautilus .')
