@@ -5,16 +5,11 @@
 	<title></title>
 </head>
 <body>
+	<script src="require.js"></script>
 	<script>
-		'use strict';
-
-var _main = require('main.js');
-
-input.map(function (item) {
-  return item + 1;
-});
-
-(0, _main.hello)(' zwl!');
+		require(['amd'], function(amd) {
+			console.log( amd.add(1,2) )
+		})
 	</script>
 </body>
 </html>
