@@ -1,0 +1,9 @@
+{
+  "name": "Cssnano",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "cssnano": "^3.10.0"
+  }
+}
