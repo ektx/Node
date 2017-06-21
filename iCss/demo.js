@@ -4,9 +4,9 @@ const fs = require('fs');
 let input ='a{font-weight:bold; }';
 
 let options = {
-	inline: ['all']
+	inline: ['remote']
 };
-fs.readFile('css/configurationTable.css', 'utf8', function(err, data) {
+fs.readFile('css/layout.css', 'utf8', function(err, data) {
 	if (err) { throw err };
 
 	let output = new cleanCss(options).minify( data );
