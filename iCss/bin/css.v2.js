@@ -4,7 +4,7 @@ const path = require('path');
 function css(options) {
 
 	// 数组优化输出
-	let getImportCss = (originPath, arr) => {
+	let getImportCss = (originPath, arr, index = 2) => {
 		let newArr = [];
 
 		for (let val of arr) {
@@ -23,13 +23,16 @@ function css(options) {
 			_obj.resolve = path.resolve(originPath, _obj.path);
 
 			try {
+
+				let removeRelativePoint = new RegExp(`(\.{2}\/){${index}}`, 'g');
+
 				_obj.inner = 
 `\n\r/* ==================================
 	${_obj.comment ? _obj.comment.slice(2, _obj.comment.length -2) : "无"}
 	${_obj.path} 
 ================================== */\n\r` + 
 					fs.readFileSync(_obj.resolve, 'utf8')
-					.replace(/(\.{2}\/){2}/g, '../')
+					.replace(removeRelativePoint, '../')
 					.replace(/@charset\s('|")utf-8('|");/i, '')
 					.replace(/[\n\r]{3,}/,'')
 
