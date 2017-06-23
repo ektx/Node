@@ -1,14 +1,4 @@
 @charset "utf-8";
-/* ==================================
-	 一级 
-	parts/one.css 
-================================== */
-/* 二级 */
-@import url('two/two.css');
-
-h1 {
-    color: red
-}
 
 h1 {
 	color: yellow
