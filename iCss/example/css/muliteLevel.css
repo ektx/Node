@@ -3,3 +3,7 @@
 
 /* 一级 */
 @import url('parts/one.css');
+
+h1 {
+	color: yellow
+}

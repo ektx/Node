@@ -47,22 +47,37 @@ function css(options) {
 		return newArr; 
 	}
 
-	fs.readFile(options.file, 'utf8', (err, data)=> {
-		if (err) {
-			console.log('不存在要生成的文件\n'+ options.file);
-			return;
-		}
+	let readFileInner = (filePath, callback) => {
 
-		let result = ['@charset "utf-8"'];
-		let originDirPath = path.dirname( options.file );
-		let allImportFiles = getImportCss(originDirPath, data.match(/(\/\*.+[\n\r])?@import.+;/gi ) );
+		fs.readFile(filePath, 'utf8', (err, data)=> {
+			if (err) {
+				console.log('不存在要生成的文件\n'+ options.file);
+				return;
+			}
+
+			let result = ['@charset "utf-8";'];
+			let originDirPath = path.dirname( options.file );
+			let allImportFiles = getImportCss(originDirPath, data.match(/(\/\*.+[\n\r])?@import.+;/gi ) );
+
+			allImportFiles.forEach( (val, index, array) => {
+				result.push(val.inner)
+			})
+
+			data = data
+					.replace( /(\/\*.+[\n\r])?@import.+;/gi, '')
+					.replace( /[\r\n]{2,}/g, '\r\n' )
+					.replace( /@charset\s('|")utf-8('|");/i, '')
 
 
-		allImportFiles.forEach( (val, index, array) => {
-			result.push(val.inner)
+			if (callback) callback( result.join('')+data )
+
 		})
+	}
 
-		fs.writeFile(options.out, result.join(''), 'utf8', err=> {
+
+	let writeFileInner = data => {
+		
+		fs.writeFile(options.out, data, 'utf8', err=> {
 			if (err) {
 				console.log('保存文件时出错! '+ err)
 				return;
@@ -70,7 +85,10 @@ function css(options) {
 
 			console.log('保存成功:' + options.out)
 		})
-	})
+
+	}
+
+	readFileInner( options.file, writeFileInner )
 
 }
 
