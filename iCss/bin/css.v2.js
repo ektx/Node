@@ -6,6 +6,9 @@ const dirFiles = require('./dirFiles');
 // 保存样式
 const SAVE_CSS_SPACE = {};
 
+/*
+
+*/
 function getImportCss (data, parentFilePath) {
 	let newArr = [];
 
@@ -96,11 +99,6 @@ function css(options) {
 
 		dataParent.import = getImportCss( data, filePath );
 
-
-		// allImportFiles.forEach( (val, index, array) => {
-		// 	result.push(val.inner)
-		// })
-
 		dataParent.clearData = data
 				.replace( /(\/\*.+[\n\r])?@import.+;/gi, '')
 				.replace( /[\r\n]{2,}/g, '\r\n' )
@@ -110,7 +108,13 @@ function css(options) {
 
 	}
 
-	doThisCssFile( options.file )
+	let mergeThisCssFile = (filePath) => {
+		
+	}
+
+	doThisCssFile( options.file );
+
+	mergeThisCssFile( options.file );
 
 }
 

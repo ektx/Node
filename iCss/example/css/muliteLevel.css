@@ -4,6 +4,21 @@
 /* 一级 */
 @import url('parts/one.css');
 
+body {
+	background: #f5f5f5;
+}
+
 h1 {
 	color: yellow
 }
+
+.body {
+	width: 400px;
+	height: 200px;
+	background: #09f;
+}
+
+#menu {
+
+}
+
