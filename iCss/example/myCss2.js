@@ -4,10 +4,17 @@ const css = require('../bin/css.v2');
 css({
 	file: 'css/muliteLevel.css', 
 	out: 'dist/muliteLevel.css'
+}, (r)=> {
+	console.log(r.save)
+	console.log(r.error)
 });
 
 
-css({
+result = css({
 	file: 'css/layout.css', 
 	out: 'dist/layout.css'
+}, (r)=> {
+
+	console.log(r.save)
+	console.log(r.error)
 });

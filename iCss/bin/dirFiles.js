@@ -7,7 +7,6 @@ const getFileType = require('./getFileType');
 	-------------------------------------
 */
 function findDirFiles(dirPath, inChild) {
-	console.log(dirPath, inChild);
 
 	let result = '';
 	let fileTypeArr = [];
@@ -29,7 +28,10 @@ function findDirFiles(dirPath, inChild) {
 			})
 
 		} catch (err) {
-			fileTypeArr = err;
+			fileTypeArr = {
+				status: true,
+				error: err
+			}
 		}
 		
 	}

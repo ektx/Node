@@ -14,68 +14,83 @@ function getImportCss (data, parentFilePath) {
 
 	let arr = data.match(/(\/\*.+[\n\r])?@import.+;/gi )
 
-	for (let val of arr) {
+	if (arr && arr.length > 0) {
 
-		let _obj = {};
+		for (let val of arr) {
 
-		if ( /[\n\r]/.test(val) ) {
-			_obj.comment = val.match(/\/\*.*\*\//)[0]
-		} else {
-			_obj.comment = '无'
+			let _obj = {};
+
+			if ( /[\n\r]/.test(val) ) {
+				_obj.comment = val.match(/\/\*.*\*\//)[0]
+			} else {
+				_obj.comment = '无'
+			}
+
+			val = val.match(/@im.+['"$]/gi)[0];
+			_obj.importPath = val.slice(13, val.length - 1);
+
+			_obj.resolve = path.resolve(path.dirname(parentFilePath), _obj.importPath);
+
+			newArr.push(_obj)
 		}
-
-		val = val.match(/@im.+['"$]/gi)[0];
-		_obj.path = val.slice(13, val.length - 1);
-
-		_obj.resolve = path.resolve(path.dirname(parentFilePath), _obj.path);
-
-		newArr.push(_obj)
 	}
 
 	return newArr; 
 }
 
-function css(options) {
+function css(options, callback) {
 
 
-	if (options.file in SAVE_CSS_SPACE) {
-		console.log('此文件已经读取过!')
-	} else {
-		// 得到父级地址
-		let inputDirName = path.dirname(options.file);
+	let readDirAllCss = filePath => {
 
-		// 读取此文件所在父级目录下所有的文件
-		let getAllCssPath = dirFiles(inputDirName, true);
+		if (filePath in SAVE_CSS_SPACE) {
+			console.log('此文件已经读取过!')
+		} else {
+			// 得到父级地址
+			let inputDirName = path.dirname(filePath);
 
-		getAllCssPath.forEach( val => {
+			// 读取此文件所在父级目录下所有的文件
+			let getAllCssPath = dirFiles(inputDirName, true);
 
-			// 对文件进行读取
-			if (val.type === 'file' && path.extname(val.name) === '.css') {
+			// 如果读取文件目录出错
+			if (getAllCssPath.status) {
 
-				// 此文件未被读取在内存中
-				if (!(val.path in SAVE_CSS_SPACE)) {
+				SAVE_CSS_SPACE[filePath] = {
+					originData: '',
+					status: 'error',
+					error: getAllCssPath.error
+				}
+				return;
+			};
 
-					try {
-						let data = fs.readFileSync(val.path, 'utf8');
-						
-						SAVE_CSS_SPACE[val.path] = {
-							originData: data
+			getAllCssPath.forEach( val => {
+
+				// 对文件进行读取
+				if (val.type === 'file' && path.extname(val.name) === '.css') {
+
+					// 此文件未被读取在内存中
+					if (!(val.path in SAVE_CSS_SPACE)) {
+
+						try {
+							let data = fs.readFileSync(val.path, 'utf8');
+							
+							SAVE_CSS_SPACE[path.resolve(val.path)] = {
+								originData: data
+							}
+						} catch (err) {
+
+							console.log('读取以下文件时错误:\n', val.path);
 						}
-					} catch (err) {
 
-						console.log('读取以下文件时错误:\n', val.path);
+					} else {
+						console.log(val.path+' 已经存在!')
 					}
 
-				} else {
-					console.log(val.path+' 已经存在!')
 				}
 
-			}
+			})
 
-		})
-
-		console.log('1. 已经取得所有样式');
-		
+		}
 	}
 
 	/*
@@ -86,35 +101,101 @@ function css(options) {
 	*/
 	let doThisCssFile = (filePath) => {
 
-		// 已经处理过
-		if (SAVE_CSS_SPACE[options.file].clearData) {
-			console.log( filePath, '已经处理过了')
+		if (!(filePath in SAVE_CSS_SPACE)) {
+			if (!result.error) {
+				result.error = []
+			}
+
+			result.error.push( filePath );
+			readDirAllCss( filePath )
 			return;
 		}
 
-		let result = ['@charset "utf-8";'];
-		let originDirPath = path.dirname( options.file );
+		// 已经处理过
+		if (SAVE_CSS_SPACE[filePath].clearData) return;
+
 		let dataParent = SAVE_CSS_SPACE[filePath];
 		let data = dataParent.originData;
 
 		dataParent.import = getImportCss( data, filePath );
+
+		if (dataParent.import.length > 0) {
+			for(let i = 0, l = dataParent.import.length; i < l; i++) {
+				doThisCssFile( dataParent.import[i].resolve )
+			}
+		}
 
 		dataParent.clearData = data
 				.replace( /(\/\*.+[\n\r])?@import.+;/gi, '')
 				.replace( /[\r\n]{2,}/g, '\r\n' )
 				.replace( /@charset\s('|")utf-8('|");/i, '');
 
-		console.log('xxx', dataParent )
-
 	}
+
 
 	let mergeThisCssFile = (filePath) => {
-		
+		let result = [];
+		let thisCss = SAVE_CSS_SPACE[path.resolve(filePath)];
+
+		if (thisCss.import && thisCss.import.length > 0) {
+
+			let imports = thisCss.import;
+
+			for (let i = 0, l = imports.length; i < l; i++) {
+				if (!imports[i].clearData) {
+
+					let _comment = imports[i].comment;
+					_comment = _comment.slice(2, _comment.length-2);
+
+					// 添加模板数据
+					result.push( `\r\n\r\n/*==================================== 
+	Start ${_comment}
+	${imports[i].importPath}
+>>>>----------------------------->*/\r\n`  );
+					result.push( mergeThisCssFile( imports[i].resolve ) );
+					result.push( `\r\n/* <------------- END ${_comment} -------------<<<< */`  );
+				}
+
+			}
+		} 
+
+		// 添加自己的数据
+		result.push( thisCss.clearData );
+
+		return result.join('')
 	}
 
-	doThisCssFile( options.file );
 
-	mergeThisCssFile( options.file );
+	let writeFileInner = data => {
+		
+		fs.writeFile(options.out, data, 'utf8', err=> {
+			if (err) {
+				console.log('保存文件时出错! '+ err);
+				result.save = false;
+
+				if (callback) callback(result)
+				return;
+			}
+
+			result.save = true;
+			if (callback) callback(result)
+			// console.log('保存成功:' + options.out)
+		})
+
+	}
+
+	let result = {};
+
+	// 读取当前样式目录下所有文件
+	readDirAllCss(options.file)
+
+	doThisCssFile( path.resolve(options.file) );
+
+	result.data = mergeThisCssFile( options.file );
+
+	writeFileInner( result.data )
+
+	return result
 
 }
 
