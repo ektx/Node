@@ -1,11 +1,0 @@
-@charset "utf-8"
-/* ==================================
-	 一级 
-	parts/one.css 
-================================== */
-/* 二级 */
-@import url('parts/two.css');
-
-.one {
-    background: url('../img/one.png');
-}

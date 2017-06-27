@@ -4,6 +4,7 @@
 /UglifyJS
 /GenerateTemHTML
 /iMkdirs
+/iCss
 /iTinify
 /zlogs
 /SVNPath
@@ -14,3 +15,4 @@
 
 # SVGO
 /SVGO/output
+/mySelf

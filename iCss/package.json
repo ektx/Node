@@ -1,9 +1,11 @@
 {
-  "name": "clean-css",
-  "version": "1.0.0",
+  "name": "i-css",
+  "version": "0.2.0",
+  "description": "合并import样式功能",
   "main": "index.js",
+  "author": "ektx",
   "license": "MIT",
   "dependencies": {
-    "clean-css": "^4.0.12"
+    "dirfiles": "^0.0.1"
   }
 }

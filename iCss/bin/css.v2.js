@@ -1,8 +1,15 @@
+/*
+	iCss
+	-----------------------------------
+	v0.2.0
+*/
+
+
 const fs = require('fs');
 const path = require('path');
 
 // 获取指定目录下所有的文件组件
-const dirFiles = require('./dirFiles');
+const dirFiles = require('dirfiles');
 // 保存样式
 const SAVE_CSS_SPACE = {};
 
@@ -57,6 +64,7 @@ function css(options, callback) {
 
 				SAVE_CSS_SPACE[filePath] = {
 					originData: '',
+					clearData: '/* 读取文件时错误,没有发现此文件所在的父级目录 */',
 					status: 'error',
 					error: getAllCssPath.error
 				}
