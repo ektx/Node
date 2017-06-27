@@ -1,3 +1,9 @@
+@charset 'utf-8';
+/* 
+	iCss v0.2.0
+	(c) 2017 ektx
+	welcome use it!
+*/
 
 
 /*==================================== 
@@ -21,15 +27,26 @@
 h1 {
     color: orange
 }
+.imgTest3 {
+	background: url('../img/logo.png');
+}
 /* <------------- END  三级  -------------<<<< */
 
 h1 {
     color: blue
 }
+.imgTest2 {
+	background: url('../img/logo.png');
+}
 /* <------------- END  二级  -------------<<<< */
 
 h1 {
     color: red
+}
+.imgTest {
+	width: 40px;
+	height: 40px;
+	background: url('../img/logo.png');
 }
 /* <------------- END  一级  -------------<<<< */
 
@@ -48,10 +65,16 @@ h1 {
 h1 {
     color: orange
 }
+.imgTest3 {
+	background: url('../img/logo.png');
+}
 /* <------------- END  三级  -------------<<<< */
 
 h1 {
     color: blue
+}
+.imgTest2 {
+	background: url('../img/logo.png');
 }
 /* <------------- END  二级  -------------<<<< */
 

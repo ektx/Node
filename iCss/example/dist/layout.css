@@ -1,3 +1,9 @@
+@charset 'utf-8';
+/* 
+	iCss v0.2.0
+	(c) 2017 ektx
+	welcome use it!
+*/
 
 
 /*==================================== 
@@ -76,7 +82,7 @@ button, input, select {
 	width: 1em;
 	height: 1em;
 	vertical-align: middle;
-	background-image: url('../../img/os/icos.png');
+	background-image: url('../img/os/icos.png');
 }
 .web-9x { font-size: 9px }
 .web-18x { font-size: 18px }
@@ -167,7 +173,7 @@ button, input, select {
 	border: none;
 	outline: none;
 	cursor: pointer;
-	background: url('../../img/os/edits.png') no-repeat;
+	background: url('../img/os/edits.png') no-repeat;
 }
 .editIco-add-ico { background-position: 0 0 }
 .editIco-add-ico:hover { background-position: 0 -20px }
@@ -1183,7 +1189,7 @@ select {
 	只有面包屑的状态
 	-------------------- HTML --------------------
 	<div class="bread-crumbs-box">
-		<%- include('../../../parts/breadCrumbs', {data: ['数据订阅','数据开放门户','应用商店']}) %>
+		<%- include('../parts/breadCrumbs', {data: ['数据订阅','数据开放门户','应用商店']}) %>
 	</div>
 	------------------- END HTML -----------------
 */
@@ -1782,7 +1788,7 @@ header .more-btn {
 	margin:22px auto 0;
 }
 .collect-task-control dt .icons{
-	background: url("../../img/os/icon.png") no-repeat;
+	background: url("../img/os/icon.png") no-repeat;
 	margin:0 auto 2px;
 	height: 51px;
 	width: 36px;
@@ -1945,7 +1951,7 @@ header .more-btn {
 }
 .collect-task-control dt.cursor-path-col:after{
 	content: '';
-	display: block;background: url("../../img/os/san.png") no-repeat;
+	display: block;background: url("../img/os/san.png") no-repeat;
 	width: 22px;
 	height: 17px;
 	position: absolute;
@@ -2034,7 +2040,7 @@ dl.slant5{
 }
 .slant:after{
 	content: '';
-	display: block;background: url("../../img/os/san.png") no-repeat;
+	display: block;background: url("../img/os/san.png") no-repeat;
 	width: 22px;
 	height: 17px;
 	position: absolute;
@@ -2075,7 +2081,7 @@ dl.slant5{
 }
 .collect-task-control dt.cursor-path4 span:after{
 	content: '';
-	display: block;background: url("../../img/os/san.png") no-repeat;
+	display: block;background: url("../img/os/san.png") no-repeat;
 	width: 22px;
 	height: 17px;
 	position: absolute;
@@ -2313,7 +2319,7 @@ dl.slant5{
     width: 60px;
     height: 60px;
     float: left;
-    background:url("../../img/os/cloud.png") no-repeat 0 0 #f1a622;
+    background:url("../img/os/cloud.png") no-repeat 0 0 #f1a622;
     border-radius: 4px;
     border:1px solid #eaedf1;
     margin-right: 6px;

@@ -133,10 +133,12 @@ function css(options, callback) {
 			}
 		}
 
+
 		dataParent.clearData = data
 				.replace( /(\/\*.+[\n\r])?@import.+;/gi, '')
 				.replace( /[\r\n]{2,}/g, '\r\n' )
-				.replace( /@charset\s('|")utf-8('|");/i, '');
+				.replace( /@charset\s['"](utf)-?8['"];?/i, '')
+				.replace( /(\.{2}\/)+/g, '../');
 
 	}
 
@@ -174,9 +176,9 @@ function css(options, callback) {
 	}
 
 
-	let writeFileInner = data => {
+	let writeFileInner = (fpath, data) => {
 		
-		fs.writeFile(options.out, data, 'utf8', err=> {
+		fs.writeFile(fpath, data, 'utf8', err=> {
 			if (err) {
 				console.log('保存文件时出错! '+ err);
 				result.save = false;
@@ -187,12 +189,29 @@ function css(options, callback) {
 
 			result.save = true;
 			if (callback) callback(result)
-			// console.log('保存成功:' + options.out)
+			// console.log('保存成功:' + fpath)
 		})
 
 	}
 
+	let minCss = data => {
+		result.min = data.replace(/(\t|\s{2,}|\/\*(.|\r\n|\n)*?\*\/|\;(?=(\n|\r\n|\t)*?\})|\s(?=\{)|\s(?=\())/g, '')
+		.replace(/:\s/g, ':')
+		.replace(/,\s/g, ',')
+		.replace(/\s>\s/g, '>')
+		.replace(/[\r\n]/g, '');
+
+		writeFileInner( options.out.substring(0, options.out.length - 3) + 'min.css', result.readmeInfo + result.min)
+	}
+
 	let result = {};
+
+	result.readmeInfo = `@charset 'utf-8';
+/* 
+	iCss v0.2.0
+	(c) 2017 ektx
+	welcome use it!
+*/\r\n`
 
 	// 读取当前样式目录下所有文件
 	readDirAllCss(options.file)
@@ -201,7 +220,9 @@ function css(options, callback) {
 
 	result.data = mergeThisCssFile( options.file );
 
-	writeFileInner( result.data )
+	minCss( result.data )
+
+	writeFileInner( options.out, result.readmeInfo + result.data )
 
 	return result
 

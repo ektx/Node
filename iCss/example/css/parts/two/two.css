@@ -8,3 +8,7 @@
 h1 {
     color: blue
 }
+
+.imgTest2 {
+	background: url('../../../img/logo.png');
+}
