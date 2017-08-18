@@ -6,7 +6,10 @@ const { buildSchema } = require('graphql');
 const mongoose = require('mongoose');
 
 const mSchema = require('./Mongodb/Schema');
-const gSchema = require('./API/Schema')
+// todo 事件列表
+// const gSchema = require('./API/Schema')
+const gSchema = require('./API/iserver')
+
 const app = express();
 
 // 连接数据库
