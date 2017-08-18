@@ -9,3 +9,9 @@ async.detect(['demo01.js', 'concat.js', 'package.json'], (filePath, callback)=> 
 	// 返回第一个查询到的结果
 	console.log(resilts)
 })
+
+async.detect(['demo01.js', 'concat.js', 'package.json'], fs.readFile, (err, resilts)=>{
+	// 返回第一个查询到的结果
+	console.log(resilts)
+})
+
