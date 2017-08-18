@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="/quotes" method="POST">
+		<input type="text" name="item">
+		<button type="submit">Submit</button>
+	</form>
+
+	<h2>GraphQL</h2>
+	<a href="/graphql?query={todo(itemId:1){itemId,item}}">GraphQL Test</a>
+</body>
+</html>
