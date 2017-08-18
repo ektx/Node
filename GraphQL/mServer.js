@@ -13,7 +13,7 @@ const gSchema = require('./API/iserver')
 const app = express();
 
 // 连接数据库
-mongoose.connect('mongodb://localhost/todoList');
+mongoose.connect('mongodb://localhost/iserver');
 mongoose.set('debug', true);
 let db =  mongoose.connection;
 db.on('error', ()=> {
@@ -40,8 +40,8 @@ app.use(bodyParser.json())
 
 app.use('/graphql', graphqlHTTP({
 	schema: gSchema.schema,
-	rootValue: root,
-	pretty: true,
+	// rootValue: root,
+	// pretty: true,
 	graphiql: true
 }))
 

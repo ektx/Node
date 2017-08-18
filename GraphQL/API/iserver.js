@@ -63,9 +63,8 @@ let schema = new GraphQLSchema({
 		resolve: (root, {account}, source, fieldASTs) => {
 			let projections = getProjection(fieldASTs);
 
-			console.log( '>>>', projections)
 		    let foundItems = new Promise((resolve, reject) => {
-			  db.usrs_m.findOne({account}, projections,(err, todos) => {
+			  db.usrs_m.find({account}, projections,(err, todos) => {
 				  err ? reject(err) : resolve(todos)
 			  })
 		  })
