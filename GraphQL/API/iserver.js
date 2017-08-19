@@ -1,6 +1,6 @@
 const {
   GraphQLObjectType,
-  GraphQLNonNull,
+  GraphQLNonNull, // 不允许为空
   GraphQLSchema,
   GraphQLString,
   GraphQLList,
@@ -15,9 +15,10 @@ let getProjection = require('./getProjection')
 let userInfo = new GraphQLObjectType({
   name: 'user',
   description: '用户',
+  // 定义可以查询的内容与说明
   fields: () => ({
 	account: {
-	  type: (GraphQLString),
+	  type: GraphQLString,
 	  description: '帐号',
 	},
 	name: {
@@ -50,23 +51,39 @@ let userInfo = new GraphQLObjectType({
 
 let schema = new GraphQLSchema({
   query: new GraphQLObjectType({
-	name: 'RootQueryType',
+	name: 'FindUsers',
 	fields: {
 	  user: {
+	  	// 引用文档与功能
 		type: new GraphQLList( userInfo ),
+		// 定义可以查询的关键字
 		args: {
-		  account: {
-			name: 'account',
-			type: new GraphQLNonNull(GraphQLString)
-		  }
+			// 帐号
+			account: {
+				name: 'account',
+				type: GraphQLString,
+				description: '帐号'
+			},
+			// 用户名
+			name: {
+				name: 'name',
+				type: GraphQLString,
+				description: '用户名'
+			}
 		},
-		resolve: (root, {account}, source, fieldASTs) => {
+		resolve: (root, {account, name}, source, fieldASTs) => {
+			// 处理要获取的信息
 			let projections = getProjection(fieldASTs);
-
+			// 回调
 		    let foundItems = new Promise((resolve, reject) => {
-			  db.usrs_m.find({account}, projections,(err, todos) => {
-				  err ? reject(err) : resolve(todos)
-			  })
+		    	// mongoose 查询方式
+		    	// 查询用户名或帐号
+				db.usrs_m.find(
+				{ $or: [ {account}, {name} ] }, 
+				projections,
+				(err, data) => {
+					err ? reject(err) : resolve(data)
+				})
 		  })
 
 		  return foundItems
