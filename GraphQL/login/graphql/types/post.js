@@ -12,15 +12,15 @@ export const postType = new GraphQLObjectType({
 		_id: {
 			type: new GraphQLNonNull(GraphQLID)
 		},
-    uid: {
+	    uid: {
 			type: GraphQLString
 		},
 		title: {
 			type: GraphQLString
 		},
-    body: {
-      type: GraphQLString
-    }
+	    body: {
+			type: GraphQLString
+	    }
 	})
 })
 
@@ -28,7 +28,7 @@ export const postType = new GraphQLObjectType({
 export const postInputType = new GraphQLInputObjectType({
 	name: 'PostInput',
 	fields: () => ({
-    uid: {
+	    uid: {
 			type: GraphQLString
 		},
 		title: {
@@ -36,6 +36,6 @@ export const postInputType = new GraphQLInputObjectType({
 		},
 		body: {
 			type: GraphQLString
-		},
+		}
 	})
 })
