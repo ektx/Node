@@ -1,17 +1,44 @@
+#忽略常用文件
+
+# node project
+*node_modules
+
+# yarn
+*yarn.lock
+*yarn-error.log
+*package-lock.json
+
+
+# Mac
+*.DS_Store
+
+# windows
+Thumbs.db
+
+
+# 添加你自己要忽略的文件
+
+
 #忽略 HTML 文件夹
 /sourceMap
 /source-map
 /UglifyJS
+
+# 静态页面生成工具
 /GenerateTemHTML
+
+# 自动生成文件夹
 /iMkdirs
+
+# 压缩工具
 /iTinify
 /zlogs
 /SVNPath
 /WebRTC
-*node_modules
-*.DS_Store
-*yarn.lock
 
 # SVGO
 /SVGO/output
+
+# 此文件夹下有多个 npm 独立插件
 /mySelf
+
