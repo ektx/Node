@@ -8,6 +8,7 @@ import {
 	GraphQLList
 } from 'graphql';
 
+// mongoose model
 import PostModel from '../../models/post';
 import { postType } from './post';
 
@@ -31,7 +32,7 @@ export const userType = new GraphQLObjectType({
 			}
 		},
 	})
-})
+});
 
 
 export const userInputType = new GraphQLInputObjectType({
@@ -44,4 +45,4 @@ export const userInputType = new GraphQLInputObjectType({
 			type: GraphQLString
 		}
 	})
-})
+});
