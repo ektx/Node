@@ -37,6 +37,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // 解析 application/json
 app.use(bodyParser.json())
 
+console.log( gSchema.schema );
 
 app.use('/graphql', graphqlHTTP({
 	schema: gSchema.schema,

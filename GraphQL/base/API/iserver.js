@@ -84,9 +84,9 @@ let schema = new GraphQLSchema({
 				(err, data) => {
 					err ? reject(err) : resolve(data)
 				})
-		  })
+			})
 
-		  return foundItems
+			return foundItems
 		}
 	  }
 	}
