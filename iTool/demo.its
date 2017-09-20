@@ -5,6 +5,18 @@
 	<title>Document</title>
 </head>
 <body>
+	<its-header i-data-name="ektx">
+		<its-self>
+			let data = {
+				name: 'ektx',
+				age: 27
+			}
+		</its-self>
+		<h1>China</h1>
+	</its-header>
+
+	<its-box-body></its-box-body>
+
 	{{ include('header', {
 		name: 'ektx',
 		include: 'can you see?'
