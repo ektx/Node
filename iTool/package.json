@@ -1,0 +1,11 @@
+{
+	"name": "itool",
+	"version": "0.0.1",
+	"author": {
+		"name": "ektx"
+	},
+	"scripts": {
+		"main": "node index.js",
+		"dev": "node --inspect-brk index.js"
+	}
+}
