@@ -100,13 +100,9 @@ debugger
 		}
 
 
-// 		// 添加容器
-// 		if (!that.labels[labelName]) that.labels[labelName] = {};
-		
-
-
-// 		that.labels[labelName].name = labelName;
-// 		that.labels[labelName].inner = valInner;
+		labelArr.forEach(val => {
+			
+		})
 
 
 	})
