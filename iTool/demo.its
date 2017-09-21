@@ -5,14 +5,24 @@
 	<title>Document</title>
 </head>
 <body>
-	<its-header i-data-name="ektx">
-		<its-self>
-			let data = {
+	<its-header>
+		<script  options>
+			options = {
 				name: 'ektx',
 				age: 27
 			}
-		</its-self>
+		</script>
 		<h1>China</h1>
+	</its-header>
+
+	<its-header>
+		<script  options>
+			options = {
+				name: 'baobao',
+				age: 24
+			}
+		</script>
+		<h1>BeiJing</h1>
 	</its-header>
 
 	<its-box-body></its-box-body>

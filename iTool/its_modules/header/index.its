@@ -11,7 +11,3 @@
 	<its-slot></its-slot>
 </template>
 
-
-<script>
-	console.log(1)
-</script>
