@@ -2,21 +2,30 @@
 const fs = require('fs');
 const path = require('path');
 
+// 文件缓存
 const ITS_CACHE = {};
+// 标签缓存
+const ITS_LABEL_CACHE = {};
 
 function ijs(filePath) {
 
 	let that;
+
+	console.log('1.读取文件信息')
 	let fileStat = fs.statSync(filePath);
 
-	console.log('1.处理文件信息')
+	console.log('2.处理文件缓存')
 	if (filePath in ITS_CACHE) {
+		console.log('2.1 文件缓存过')
 
 		if (fileStat.mtime > ITS_CACHE[filePath].mtime) {
-			console.log('file has changed!')
+			console.log('2.2 文件有更新')
+		} else {
+			console.log('2.2 文件没有更新')
 		}
 
 	} else {
+		console.log('2.1 文件没有缓存过')
 
 		ITS_CACHE[filePath] = {};
 		that = ITS_CACHE[filePath];
@@ -30,35 +39,74 @@ function ijs(filePath) {
 	that.origin = getFileInner(filePath);
 
 	console.log('get label')
-	let labelArr = that.origin.match(/<its-\w+/g);
 
-	labelArr = new Set(labelArr);
+	let labelArr = that.origin.match(/<its-(\w|-)+/g);
 
-	if (!('labels' in that)) that.labels = {};
+	// 去重模块
+	let minLabelArr = [...new Set(labelArr)];
 
-	labelArr.forEach(val => {
+	if (!('labels' in that)) that.labels = labelArr;
+
+	minLabelArr.forEach(val => {
+
 debugger
 		let labelName = val.replace(/<its-/gi, '');
-		let valExp = val+'>((\\w|.|\\n|\\t)+?)<\/'+val.substr(1)+'>';
-		let valInner = getExpInner(valExp, that.origin);
-		let options = '';
 
-		// 添加容器
-		if (!that.labels[labelName]) that.labels[labelName] = {};
-		
-		// 如果内部有js
-		if (/<script\s+options>/.test(valInner)) {
-			debugger
-			let _script = '<script\\s+options>((\\w|.|\\n|\\t)+?)<\/script>';
-			options = getExpInner(_script, valInner)
-			valInner = valInner.replace(_script, '')
+		if (labelName in ITS_LABEL_CACHE) {
 
-			that.labels[labelName].options = eval(`(${options})`)
+		}
+		else {
+
+			let valExp = val+'>((\\w|.|\\n|\\t)+?)<\/'+val.substr(1)+'>';
+			let valInner = getExpInner(valExp, that.origin);
+			let options = '';
+			let labelPath = '';
+
+			ITS_LABEL_CACHE[labelName] = {};
+	
+			// 如果内部有js
+			if (/<script\s+options>/.test(valInner)) {
+				debugger
+				let _script = '<script\\s+options>((\\w|.|\\s)+?)<\/script>';
+				options = getExpInner(_script, valInner)
+				valInner = valInner.replace(_script, '')
+
+				options = eval(`(${options})`);
+
+				// 是否有指定模板位置
+				if (options.path) {
+
+				} 
+				
+			}
+
+			// 没有指定位置我们就读取相对平级位置
+			if (!labelPath) {
+				labelPath = path.resolve(filePath, `../its_modules/${labelName}/index.its`);
+
+			}
+
+			let labelInner = fs.readFileSync(labelPath, 'utf8');
+			let labelExp = '<style>((\\w|.|\\n|\\t)+?)<\/style>';
+			let labelStyle = getExpInner(labelExp, labelInner);
+
+			let labelTemExp = '<template>((\\w|.|\\n|\\t)+?)<\/template>';
+			let labelTem = getExpInner(labelTemExp, labelInner);
+
+			ITS_LABEL_CACHE[labelName].path = labelPath;
+			ITS_LABEL_CACHE[labelName].style = labelStyle.trim();
+			ITS_LABEL_CACHE[labelName].tem = labelTem.trim();
+			ITS_LABEL_CACHE[labelName].stat = fs.statSync(labelPath);
 		}
 
 
-		that.labels[labelName].name = labelName;
-		that.labels[labelName].inner = valInner;
+// 		// 添加容器
+// 		if (!that.labels[labelName]) that.labels[labelName] = {};
+		
+
+
+// 		that.labels[labelName].name = labelName;
+// 		that.labels[labelName].inner = valInner;
 
 
 	})

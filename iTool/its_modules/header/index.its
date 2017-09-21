@@ -3,11 +3,26 @@
 		background: #f90;
 		font-size: 32px;
 	}
+
+	main {
+		color: red;
+	}
+
+	@keyframes a {
+		from {
+			color: white
+		}
+		to {
+			color: blue
+		}
+	}
 </style>
 
 
 <template>
-	<h1>Hello {{ name }}!</h1>
-	<its-slot></its-slot>
+	<main>
+		<h1>Hello {{ name }}!</h1>
+		<its-slot></its-slot>
+	</main>
 </template>
 
