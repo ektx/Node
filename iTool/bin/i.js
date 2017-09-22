@@ -9,7 +9,16 @@ const ITS_LABEL_CACHE = {};
 
 function ijs(filePath) {
 
+	/*
+		------------------------------------------
+		第一部分
+
+		主要处理主文件自身在缓存中的情况,
+		1.读取文件内容
+		2.文件的状态信息
+	*/
 	let that;
+	let fileChanged = false;
 
 	console.log('1.读取文件信息')
 	let fileStat = fs.statSync(filePath);
@@ -20,12 +29,17 @@ function ijs(filePath) {
 
 		if (fileStat.mtime > ITS_CACHE[filePath].mtime) {
 			console.log('2.2 文件有更新')
+			
+			fileChanged = true;
+
 		} else {
 			console.log('2.2 文件没有更新')
 		}
 
 	} else {
 		console.log('2.1 文件没有缓存过')
+
+		fileChanged = true;
 
 		ITS_CACHE[filePath] = {};
 		that = ITS_CACHE[filePath];
@@ -36,9 +50,22 @@ function ijs(filePath) {
 	}
 
 	// 原始内容
-	that.origin = getFileInner(filePath);
+	// 原始内容如果在文件更新过或不在缓存中的状态下读取
+	// 否则使用缓存内容
+	if (fileChanged)
+		that.origin = getFileInner(filePath);
+	else
+		that.origin = ITS_CACHE[filePath].origin;
 
-	console.log('get label')
+
+	/*
+		第一部分完成
+		---------------------------------------------
+		第二部分开始
+
+		处理模块,将模块添加到缓存中,减少在处理多个文件时,读取模块文件
+		的问题
+	*/
 
 	let labelArr = that.origin.match(/<its-(\w|-)+/g);
 
@@ -49,36 +76,30 @@ function ijs(filePath) {
 
 	minLabelArr.forEach(val => {
 
-debugger
 		let labelName = val.replace(/<its-/gi, '');
+
+
+		// 转 label-name => labelName
+		if (labelName.includes('-'))
+			labelName = formatLabelName(labelName)
 
 		if (labelName in ITS_LABEL_CACHE) {
 
 		}
 		else {
 
-			let valExp = val+'>((\\w|.|\\n|\\t)+?)<\/'+val.substr(1)+'>';
+			let valExp = val+'>((\\w|\\W|\\s)*?)<\/'+val.substr(1)+'>';
 			let valInner = getExpInner(valExp, that.origin);
-			let options = '';
-			let labelPath = '';
 
 			ITS_LABEL_CACHE[labelName] = {};
-	
-			// 如果内部有js
-			if (/<script\s+options>/.test(valInner)) {
-				debugger
-				let _script = '<script\\s+options>((\\w|.|\\s)+?)<\/script>';
-				options = getExpInner(_script, valInner)
-				valInner = valInner.replace(_script, '')
 
-				options = eval(`(${options})`);
+			let _inner = getOptions(valInner);
+			let options = _inner.options;
+			
+			valInner = _inner.clearInner;
 
-				// 是否有指定模板位置
-				if (options.path) {
+			let labelPath = options.path ? options.path : '';
 
-				} 
-				
-			}
 
 			// 没有指定位置我们就读取相对平级位置
 			if (!labelPath) {
@@ -87,26 +108,54 @@ debugger
 			}
 
 			let labelInner = fs.readFileSync(labelPath, 'utf8');
-			let labelExp = '<style>((\\w|.|\\n|\\t)+?)<\/style>';
+			let labelExp = '<style>((\\w|.|\\s)+?)<\/style>';
 			let labelStyle = getExpInner(labelExp, labelInner);
 
-			let labelTemExp = '<template>((\\w|.|\\n|\\t)+?)<\/template>';
+			let labelTemExp = '<template>((\\w|.|\\s)+?)<\/template>';
 			let labelTem = getExpInner(labelTemExp, labelInner);
 
 			ITS_LABEL_CACHE[labelName].path = labelPath;
 			ITS_LABEL_CACHE[labelName].style = labelStyle.trim();
 			ITS_LABEL_CACHE[labelName].tem = labelTem.trim();
 			ITS_LABEL_CACHE[labelName].stat = fs.statSync(labelPath);
+
+			// 处理样式
+			console.log('添加模块的样式')
 		}
-
-
-		labelArr.forEach(val => {
-			
-		})
 
 
 	})
 
+
+	/*
+		第二部分结束
+		----------------------------------------
+		第三部分开始
+
+		这里主要工作就是将模块与页面合并成文件
+		1.添加样式表
+		2.处理模板逻辑
+
+
+	*/
+	labelArr.forEach(val => {
+		
+		let labelName = val.replace(/<its-/gi, '');
+		let CLabelObj = ITS_LABEL_CACHE[ formatLabelName(labelName) ];
+
+		// if (!('labelCss' in that)) that.labelCss = [];
+		let labelExp = new  RegExp('<its-'+labelName+'>((\\W|\\w|\\s)*?)<\/its-'+labelName+'>');
+		let inOriginInner = that.origin.match(labelExp)[1];
+
+		let options = getOptions(inOriginInner);
+debugger
+
+		// 处理模板
+		let HTML = doWithTem(CLabelObj.tem, options);
+
+		that.origin = that.origin.replace(labelExp, HTML)
+
+	})
 
 	console.log( that )
 }
@@ -116,12 +165,55 @@ function getFileInner (filePath) {
 }
 
 function getExpInner (exp, data, art = '') {
+
 	let _exp = new RegExp(exp, art);
 	let _inner = data.match(_exp);
 
 	_inner = !!_inner ? _inner[1] : '';
 
 	return _inner;
+}
+
+
+function doWithTem(tem, data) {
+	console.log(tem, data)
+
+	if (tem.includes('<its-slot></its-slot>')) {
+		tem = tem.replace('<its-slot></its-slot>', data.clearInner)
+	}
+
+	return tem
+}
+
+
+function getOptions(inner) {
+
+	let options = '';
+	let clearInner = '';
+
+	// 如果内部有js
+	if (/<script\s+options>/.test(inner)) {
+
+		let _script = '<script\\s+options>((\\w|.|\\s)+?)<\/script>';
+		options = getExpInner(_script, inner)
+		clearInner = inner.replace(new RegExp(_script), '').trim()
+
+		options = eval(`(${options})`);
+
+	}
+
+	return {
+		options,
+		clearInner
+	}
+}
+
+
+// 格式化 label name
+function formatLabelName (str) {
+	return str.replace(/-(\w)/g, $1 => {
+		return $1.substr(1).toUpperCase()
+	})
 }
 
 
