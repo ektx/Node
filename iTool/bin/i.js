@@ -148,7 +148,6 @@ function ijs(filePath) {
 		let inOriginInner = that.origin.match(labelExp)[1];
 
 		let options = getOptions(inOriginInner);
-debugger
 
 		// 处理模板
 		let HTML = doWithTem(CLabelObj.tem, options);
@@ -178,9 +177,35 @@ function getExpInner (exp, data, art = '') {
 function doWithTem(tem, data) {
 	console.log(tem, data)
 
+	// 处理插槽
 	if (tem.includes('<its-slot></its-slot>')) {
 		tem = tem.replace('<its-slot></its-slot>', data.clearInner)
 	}
+
+debugger;
+	// i-for
+	let forArr = tem.match(/<(\w)+\s*i-for="(\w|\s)+">/g);
+
+	forArr.forEach((val, i) => {
+
+		let forTagName = '';
+		let forInner;
+
+		// 是数组或对象
+		if (val.includes(' in ')) {
+			forInner = val.match(/<(\w+)\s+i-for="(\w+)\s+in\s+(\w+)">/i);
+		}
+		// 数字
+		else {
+
+			let matchArr = val.match(/<(\w+)\s+i-for="(\w+)">/i);
+			forTagName = matchArr[1];
+			forInner = matchArr[2];
+
+		}
+
+		// forTagName = match(/<(\w+)/)[1];
+	})
 
 	return tem
 }
@@ -214,6 +239,24 @@ function formatLabelName (str) {
 	return str.replace(/-(\w)/g, $1 => {
 		return $1.substr(1).toUpperCase()
 	})
+}
+
+
+function getDOMTree (str) {
+
+	let labelExp = new RegExp('<(\\w+)\\s+((\\w|\\s|-|=|")+)>', 'i')
+	let labelM = str.match(labelExp);
+	let labelName = labelM[1];
+	let labelAttr = labelM[2];
+	let labelInner = str.replace(labelExp, '')
+						.replace(new RegExp(`<\/${labelName}>`, ''));
+
+
+	return {
+		labelName,
+		labelAttr,
+		labelInner
+	}
 }
 
 

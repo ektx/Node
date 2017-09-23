@@ -9,7 +9,12 @@
 		<script  options>
 			options = {
 				name: 'ektx',
-				age: 27
+				size: 2,
+				arr: [1,2],
+				obj: {
+					name: 'ijs',
+					version: '0.0.1'
+				}
 			}
 		</script>
 		<h1>China</h1>

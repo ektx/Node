@@ -25,12 +25,13 @@
 		{{ for (let i = 0; i < 5; i++) { }}
 			<p>Test!</p>			
 		{{ } }}
-
+		
+		<!-- i-for 匹配数字示例 -->
 		<p i-for="5">number</p>
 
-		<p i-for="val in [1,2]">{{val}}</p>
+		<p i-for="val in arr">{{val}}</p>
 
-		<p i-for="val in { name: 'zwl', age: 22}">
+		<p i-for="val in obj">
 			<span>{{val.name}}</span>
 		</p>
 
