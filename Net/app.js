@@ -12,6 +12,8 @@ const net = require('net')
 const server = net.createServer( (c) => {
 	console.log('Client Connected!');
 
+	console.log(c.localAddress)
+
 	c.on('end', () => {
 		console.log('Client disconnected!')
 	});
