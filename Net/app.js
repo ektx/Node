@@ -27,4 +27,5 @@ server.on('error', err => {
 
 server.listen(3000, () => {
 	console.log('Server Bound: http://localhost:3000')
+	console.log(server.address())
 })
