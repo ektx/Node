@@ -22,6 +22,16 @@ Node.js学习案例与笔记
 npm publish
 ```
 
+## 开源项目推荐
+
+###[node-notifier](https://github.com/mikaelbr/node-notifier)
+A Node.js module for sending notifications on native Mac, Windows and Linux (or Growl as fallback)
+
+
+###[node-sass](https://github.com/sass/node-sass)
+Node-sass is a library that provides binding for Node.js to LibSass, the C version of the popular stylesheet preprocessor, Sass.
+
+It allows you to natively compile .scss files to css at incredible speed and automatically via a connect middleware.
 
 
 ## 参考
