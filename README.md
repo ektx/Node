@@ -24,8 +24,23 @@ npm publish
 
 ## 开源项目推荐
 
+
+
 ###[node-notifier](https://github.com/mikaelbr/node-notifier)
+
 A Node.js module for sending notifications on native Mac, Windows and Linux (or Growl as fallback)
+
+一个可以使用 Mac、Windows 和 Linux 系统原生的通知功能 Node.js 模块。
+
+
+
+#### [node-qrcode](https://github.com/soldair/node-qrcode)
+
+qr code generator
+
+二维码生成
+
+
 
 
 ###[node-sass](https://github.com/sass/node-sass)
