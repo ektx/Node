@@ -4,12 +4,11 @@ Node.js学习案例与笔记
 
 ## 文档说明
 
-#### Demo 示例
+- Demo 示例
 
-#### Doc  文档
+- Doc  文档
 
-### GenneratePages 页面生成
-
+- GenneratePages 页面生成  
 功能是把ejs模板文件生成静态页面
 
 
@@ -26,7 +25,7 @@ npm publish
 
 
 
-####[node-notifier](https://github.com/mikaelbr/node-notifier)
+#### [node-notifier](https://github.com/mikaelbr/node-notifier)
 
 A Node.js module for sending notifications on native Mac, Windows and Linux (or Growl as fallback)
 
@@ -54,6 +53,14 @@ Chance - Js随机生成小助手
 
 
 
+### 数据请求
+
+#### [node-fetch](https://github.com/bitinn/node-fetch)
+
+A light-weight module that brings window.fetch to Node.js
+
+
+
 ### 二维码工具
 
 #### [node-qrcode](https://github.com/soldair/node-qrcode)
@@ -67,7 +74,7 @@ qr code generator
 ### 样式预处理器
 
 
-####[node-sass](https://github.com/sass/node-sass)
+#### [node-sass](https://github.com/sass/node-sass)
 Node-sass is a library that provides binding for Node.js to LibSass, the C version of the popular stylesheet preprocessor, Sass.
 
 It allows you to natively compile .scss files to css at incredible speed and automatically via a connect middleware.
