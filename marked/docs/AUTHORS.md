@@ -1,30 +1,146 @@
 # Authors
 
-Marked takes an encompassing approach to its community. As such, you can think of these as [concentric circles](https://medium.com/the-node-js-collection/healthy-open-source-967fa8be7951), where each subsequent group is enveloped by the previous one.
+Marked takes an encompassing approach to its community. As such, you can think of these as [concentric circles](https://medium.com/the-node-js-collection/healthy-open-source-967fa8be7951), where each group encompases the following groups.
 
-## Users
+<table>
+  <tbody>
+  	<tr>
+      <td align="center" valign="top" style="width:32%">
+        <a href="https://github.com/chjj">
+          <img width="100" height="100" src="https://github.com/chjj.png?s=150">
+        </a>
+        <br>
+        <a href="https://github.com/chjj">Christopher Jeffrey</a>
+        <div>Original Author</div>
+        <small>Started the fire</small>
+      </td>
+      <td align="center" valign="top" style="width:32%">
+        <a href="https://github.com/joshbruce">
+          <img width="100" height="100" src="https://github.com/joshbruce.png?s=150">
+        </a>
+        <br>
+        <a href="https://joshbruce.com">Josh Bruce</a>
+        <div>Publisher</div>
+        <small>Release Wrangler; Humaning Helper; Heckler of Hypertext</small>
+      </td>
+      <td align="center" valign="top" style="width:32%">
+        <a href="https://github.com/styfle">
+          <img width="100" height="100" src="https://github.com/styfle.png?s=150">
+        </a>
+        <br>
+        <a href="https://www.ceriously.com">Steven</a>
+        <div>Admin</div>
+        <small>Open source, of course; GitHub Guru; Humaning Helper</small>
+      </td>
+    </tr>
+  	<tr>
+      <td align="center" valign="top">
+        <a href="https://github.com/davisjam">
+          <img width="100" height="100" src="https://github.com/davisjam.png?s=150">
+        </a>
+        <br>
+        <a href="https://github.com/davisjam">Jamie Davis</a>
+        <div>Committer</div>
+        <small>Seeker of Security</small>
+      </td>
+      <td align="center" valign="top">
+        <a href="https://github.com/UziTech">
+          <img width="100" height="100" src="https://github.com/UziTech.png?s=150">
+        </a>
+        <br>
+        <a href="https://tony.brix.ninja">Tony Brix</a>
+        <div>Committer</div>
+        <small>Titan of the test harness; Dr. DevOps</small>
+      </td>
+      <td align="center" valign="top">
+        &nbsp;
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-Users are anyone using Marked in some fashion, without them, there's no reason for us to exist.
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top">
+        <a href="https://github.com/intcreator">
+          <img width="100" height="100" src="https://github.com/intcreator.png?s=150">
+        </a>
+        <br>
+        <a href="https://github.com/intcreator">Brandon der Blätter</a>
+        <div>Contributor</div>
+        <small>Curious Contributor</small>
+      </td>
+      <td align="center" valign="top">
+        <a href="https://github.com/carlosvalle">
+          <img width="100" height="100" src="https://github.com/carlosvalle.png?s=150">
+        </a>
+        <br>
+        <a href="https://github.com/carlosvalle">Carlos Valle</a>
+        <div>Contributor</div>
+        <small>Maker of the Marked mark from 2018 to present</small>
+      </td>
+      <td align="center" width="20%" valign="top">
+        <a href="https://github.com/Feder1co5oave">
+          <img width="100" height="100" src="https://github.com/Feder1co5oave.png?s=150">
+        </a>
+        <br>
+        <a href="https://github.com/Feder1co5oave">Federico Soave</a>
+        <div>Contributor</div>
+        <small>Regent of the Regex; Master of Marked</small>
+      </td>
+     </tr>
+	 <tr>
+      <td align="center" valign="top">
+        <a href="https://github.com/karenyavine">
+          <img width="100" height="100" src="https://github.com/karenyavine.png?s=150">
+        </a>
+        <br>
+        <a href="https://github.com/karenyavine">Karen Yavine</a>
+        <div>Contributor</div>
+        <small>Snyk's Security Saint</small>
+      </td>
+      <td align="center" valign="top">
+        <a href="https://github.com/KostyaTretyak">
+          <img width="100" height="100" src="https://github.com/KostyaTretyak.png?s=150">
+        </a>
+        <br>
+        <a href="https://github.com/KostyaTretyak">Костя Третяк</a>
+        <div>Contributor</div>
+        <small></small>
+      </td>
+      <td align="center" width="20%" valign="top">
+        <a href="https://github.com/tomtheisen">
+          <img width="100" height="100" src="https://github.com/tomtheisen.png?s=150">
+        </a>
+        <br>
+        <a href="https://github.com/tomtheisen">Tom Theisen</a>
+        <div>Contributor</div>
+        <small>Defibrillator</small>
+      </td>
+     </tr>
+  </tbody>
+</table>
 
-To be listed: please let us know or submit a PR.
+## Publishers
 
-To be removed: please let us know or submit a PR.
+Publishers are admins who also have the responsibility, privilege, and burden of publishing the new releases to NPM and performing outreach and external stakeholder communications. Further, when things go pear-shaped, they're the ones taking most of the heat. Finally, when things go well, they're the primary ones praising the contributors who made it possible.
 
-## Contributors
+(In other words, while Admins are focused primarily on the internal workings of the project, Publishers are focused on internal *and* external concerns.)
 
-Contributors are users who submit a [PR](https://github.com/markedjs/marked/pulls), [Issue](https://github.com/markedjs/marked/issues), or collaborate in making Marked a better product and experience for all the users.
+**Should not exceed 2:** Having more people with the authority to publish a release can quickly turn into a consensus seeking nightmare (design by committee). Having only one is preferred (Directly Responsible Individual); however, given the nature of the project and its history, having an immediate fallback, and a potential deep fallback (Original author) is probably a good idea.
 
-|Name                |GitHub handle    |Badge of honor                                |
-|:-------------------|:----------------|:---------------------------------------------|
-|Brandon der Blätter |@intcreator      |Curious Contributor                           |
-|Carlos Valle        |@carlosvalle     |Maker of the Marked mark from 2018 to present |
-|Federico Soave      |@Feder1co5oave   |Regent of the Regex, Master of Marked         |
-|Karen Yavine        |@karenyavine     |Snyk's Security Saint                         |
-|Костя Третяк        |@KostyaTretyak   |--                                            |
+[Details on badges](#badges)
 
-To be listed: make a contribution and, if it has significant impact, the committers may be able to add you here.
+## Admins
 
-To be removed: please let us know or submit a PR.
+Admins are committers who also have the responsibility, privilege, and burden of selecting committers and making sure the project itself runs smoothly, which includes community maintenance, governance, dispute resolution, and so on. (Letting the contributors easily enter into, and work within, the project to begin contributing, with as little friction as possible.)
+
+**Should not exceed 3:** When there are too many people with the ability to resolve disputes, the dispute itself can quickly turn into a dispute amongst the admins themselves; therefore, we want this group to be small enough to commit to action and large enough to not put too much burden on one person. (Should ensure faster resolution and responsiveness.)
+
+To be listed: Admins are usually selected from the pool of committers (or they volunteer, using the same process) who demonstrate good understanding of the marked culture, operations, and do their best to help new contributors get up to speed on how to contribute effectively to the project.
+
+To be removed: You can remove yourself through the [GitHub UI](https://help.github.com/articles/removing-yourself-from-a-collaborator-s-repository/).
 
 [Details on badges](#badges)
 
@@ -33,12 +149,6 @@ To be removed: please let us know or submit a PR.
 Committers are contributors who also have the responsibility, privilege, some might even say burden of being able to review and merge contributions (just usually not their own).
 
 A note on "decision making authority". This is related to submitting PRs and the [advice process](http://www.reinventingorganizationswiki.com/Decision_Making). The person marked as having decision making authority over a certain area should be sought for advice in that area before committing to a course of action.
-
-|Name           |GiHub handle   |Decision making                          |Badges of honor (tag for questions) |
-|:--------------|:--------------|:----------------------------------------|------------------------------------|
-|Jamie Davis    |@davisjam      |Seeker of Security                       |                                    |
-|Steven         |@styfle        |Open source, of course and GitHub Guru   |                                    |
-|Tony Brix      |@UziTech       |Titan of the test harness and Dr. DevOps |                                    |
 
 **Should not exceed 5:** For larger PRs affecting more of the codebase and, most likely, review by more people, we try to keep this pool small and responsive and let those with decision making authority have final say without negative repercussions from the other committers.
 
@@ -54,45 +164,36 @@ A note on volunteering:
 
 [Details on badges](#badges)
 
-## Admins
+## Contributors
 
-Admins are committers who also have the responsibility, privilege, and burden of selecting committers and making sure the project itself runs smoothly, which includes community maintenance, governance, dispute resolution, and so on. (Letting the contributors easily enter into, and work within, the project to begin contributing, with as little friction as possible.)
+Contributors are users who submit a [PR](https://github.com/markedjs/marked/pulls), [Issue](https://github.com/markedjs/marked/issues), or collaborate in making Marked a better product and experience for all the users.
 
-|Name           |GiHub handle   |Decision making                          |Badges of honor (tag for questions) |
-|:--------------|:--------------|:----------------------------------------|------------------------------------|
-|Steven         |@styfle        |Open source, of course and GitHub Guru   |Humaning Helper                     |
+To be listed: make a contribution and, if it has significant impact, the committers may be able to add you here.
 
-**Should not exceed 3:** When there are too many people with the ability to reolves disputes, the dispute itself can quickly turn into a dispute amongst the admins themselves; therefore, we want this group to be small enough to commit to action and large enough to not put too much burden on one person. (Should ensure faster resolution and responsiveness.)
-
-To be listed: Admins are usually selected from the pool of committers (or they volunteer, using the same process) who demonstrate good understanding of the marked culture, operations, and do their best to help new contributors get up to speed on how to contribute effectively to the project.
-
-To be removed: You can remove yourself through the [GitHub UI](https://help.github.com/articles/removing-yourself-from-a-collaborator-s-repository/).
+To be removed: please let us know or submit a PR.
 
 [Details on badges](#badges)
 
-## Publishers
+## Users
 
-Publishers are admins who also have the responsibility, privilege, and burden of publishing the new releases to NPM and performing outreach and external stakeholder communications. Further, when things go pear-shaped, they're the ones taking most of the heat. Finally, when things go well, they're the primary ones praising the contributors who made it possible.
+Users are anyone using Marked in some fashion, without them, there's no reason for us to exist.
 
-(In other words, while Admins are focused primarily on the internal workings of the project, Publishers are focused on internal *and* external concerns.)
+|Individual or Organization |Website                 |Project                              |Submitted by                                        |
+|:--------------------------|:-----------------------|:------------------------------------|:---------------------------------------------------|
+|MarkedJS                   |https://marked.js.org   |https://github.com/markedjs/marked   |The marked committers                               |
 
-|Name       |GitHub handle  |Decision making          |Badges of honor (tag for questions)   |
-|:----------|:--------------|:------------------------|:-------------------------------------|
-|Josh Bruce |@joshbruce     |Release Wrangler         |Humaning Helper, Heckler of Hypertext |
+To be listed: All fields are optional. Contact any of the committers or, more timely, submit a pull request with the following (using the first row as an example):
 
-**Should not exceed 2:** Having more people with the authority to publish a release can quickly turn into a consensus seeking nightmare (design by committee). Having only one is preferred (Directly Responsible Individual); however, given the nature of the project and its history, having an immediate fallback, and a potential deep fallback (Original author) is probably a good idea.
+- **Individual or Organization:** The name you would like associated with the record.
+- **Website:** A URL to a standalone website for the project.
+- **Project:** A URL for the repository of the project using marked.
+- **Submitted by:** The name and optional honorifics for the person adding the listing.
 
-[Details on badges](#badges)
-
-## Original author
-
-The original author is the publisher who started it all.
-
-Christopher Jeffrey @chjj
+To be removed: Same as above. Only instead of requesting addition request deletion or delete the row yourself.
 
 <h2 id="badges">Badges</h2>
 
-Badges? You don't *need* no stinkin' badges. 
+Badges? You don't *need* no stinkin' badges.
 
 Movie references aside. (It was either that or, "Let's play a game", but that would have been creepy&hellip;that's why it will most likely come later.)
 
@@ -109,9 +210,9 @@ Badges? If you *want* 'em, we got 'em, and here's how you get 'em (and&hellip;dr
 	<dd>A contributor with less than one year on this page who is actively engaged in submitting PRs, Issues, making recommendations, sharing thoughts&hellip;without being too annoying about it (let's be clear, submitting 100 Issues recommending the Marked Committers send everyone candy is trying for the badge, not honestly earning it).</dd>
 	<dt>Dr. DevOps</dt>
 	<dd>
-		<p>Someone who understands and contributes to improving the developer experience and flow of Marked into the world.</p> 
+		<p>Someone who understands and contributes to improving the developer experience and flow of Marked into the world.</p>
 		<blockquote>
-			"The main characteristic of the DevOps movement is to strongly advocate automation and monitoring at all steps of software construction, from integration, testing, releasing to deployment and infrastructure management. DevOps aims at shorter development cycles, increased deployment frequency, more dependable releases, in close alignment with business objectives." ~ <a href="https://en.wikipedia.org/wiki/DevOps">Wikipedia</a>
+			"The main characteristic of the DevOps movement is to strongly advocate automation and monitoring at all steps of software construction, from integration, testing, releasing to deployment and infrastructure management. DevOps aims at shorter development cycles, increased deployment frequency, more dependable releases, in close alignment with business objectives." ~ <a href="https://www.wikipedia.org/wiki/DevOps">Wikipedia</a>
 		</blockquote>
 	</dd>
 	<dt>Eye for the CLI</dt>
@@ -144,6 +245,8 @@ Badges? If you *want* 'em, we got 'em, and here's how you get 'em (and&hellip;dr
 ### Special badges that come with the job:
 
 <dl>
+	<dt>Defibrillator</dt>
+	<dd>A contributor who stepped up to help bring Marked back to life by contriuting solutions to help Marked pass when compared against the CommonMark and GitHub Flavored Markdown specifications.</dd>
 	<dt>Maker of the Marked mark</dt>
 	<dd>This badge is given to the person or oganization credited with creating the logo (or logotype) used in Marked communications for a given period of time. **Maker of the Marked mark from 2017 to present**, for example.</dd>
 	<dt>Release Wrangler</dt>

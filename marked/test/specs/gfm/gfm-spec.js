@@ -15,7 +15,7 @@ Messenger.prototype.test = function(spec, section, ignore) {
     var shouldFail = ~ignore.indexOf(spec.example);
     it('should ' + (shouldFail ? 'fail' : 'pass') + ' example ' + spec.example, function() {
       var expected = spec.html;
-      var actual = marked(spec.markdown, { headerIds: false, xhtml: true });
+      var actual = marked(spec.markdown, { headerIds: false, xhtml: false });
       since(messenger.message(spec, expected, actual)).expect(
         htmlDiffer.isEqual(expected, actual)
       ).toEqual(!shouldFail);
@@ -28,8 +28,7 @@ var messenger = new Messenger();
 describe('GFM 0.28 Tables', function() {
   var section = 'Tables';
 
-  // TODO: Verify exmaple 193 is valid and passing
-  var shouldPassButFails = [192, 193, 195, 196, 197];
+  var shouldPassButFails = [];
 
   var willNotBeAttemptedByCoreTeam = [];
 
@@ -43,7 +42,7 @@ describe('GFM 0.28 Tables', function() {
 describe('GFM 0.28 Task list items', function() {
   var section = 'Task list items';
 
-  var shouldPassButFails = [272, 273];
+  var shouldPassButFails = [];
 
   var willNotBeAttemptedByCoreTeam = [];
 
@@ -57,7 +56,7 @@ describe('GFM 0.28 Task list items', function() {
 describe('GFM 0.28 Strikethrough', function() {
   var section = 'Strikethrough';
 
-  var shouldPassButFails = [469, 470];
+  var shouldPassButFails = [];
 
   var willNotBeAttemptedByCoreTeam = [];
 

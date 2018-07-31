@@ -5,8 +5,8 @@
 # Marked
 
 [![npm](https://img.shields.io/npm/v/marked.svg)](https://www.npmjs.com/package/marked)
-[![gzip size](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/marked@0.3.19/marked.min.js?compression=gzip)](https://cdn.jsdelivr.net/npm/marked@0.3.19/marked.min.js)
-[![install size](https://packagephobia.now.sh/badge?p=marked@0.3.19)](https://packagephobia.now.sh/result?p=marked@0.3.19)
+[![gzip size](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/marked/marked.min.js?compression=gzip)](https://cdn.jsdelivr.net/npm/marked/marked.min.js)
+[![install size](https://packagephobia.now.sh/badge?p=marked)](https://packagephobia.now.sh/result?p=marked)
 [![downloads](https://img.shields.io/npm/dt/marked.svg)](https://www.npmjs.com/package/marked)
 [![travis](https://travis-ci.org/markedjs/marked.svg?branch=master)](https://travis-ci.org/markedjs/marked)
 
@@ -23,13 +23,20 @@ Checkout the [demo page](https://marked.js.org/demo/) to see marked in action �
 
 Our [documentation pages](https://marked.js.org) are also rendered using marked 💯
 
+Also read about:
+
+* [Options](https://marked.js.org/#/USING_ADVANCED.md)
+* [Extensibility](https://marked.js.org/#/USING_PRO.md)
+
 ## Installation
 
 **CLI:** `npm install -g marked`
 
 **In-browser:** `npm install marked --save`
 
-## Usage 
+## Usage
+
+### Warning: 🚨 Marked does not [sanitize](https://marked.js.org/#/USING_ADVANCED.md#options) the output HTML by default 🚨
 
 **CLI**
 
@@ -64,4 +71,3 @@ $ cat hello.html
 ## License
 
 Copyright (c) 2011-2018, Christopher Jeffrey. (MIT License)
-
