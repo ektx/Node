@@ -42,3 +42,4 @@ Thumbs.db
 # 此文件夹下有多个 npm 独立插件
 /mySelf
 
+Carlo/.profile/*
