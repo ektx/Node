@@ -1,0 +1,10 @@
+{
+  "name": "range",
+  "version": "0.0.0",
+  "description": "koa range demo",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.7.0"
+  }
+}
