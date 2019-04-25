@@ -1,0 +1,16 @@
+{
+  "name": "babylon-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/generator": "^7.4.0",
+    "@babel/traverse": "^7.4.3",
+    "babel-traverse": "^6.26.0",
+    "babylon": "^6.18.0",
+    "prettier": "1.17.0"
+  },
+  "dependencies": {
+    "@babel/types": "^7.4.0"
+  }
+}
