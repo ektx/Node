@@ -1,3 +1,0 @@
-npm init
-程序自动帮助你创建package.json 不有记住那些烦多的代码
-
