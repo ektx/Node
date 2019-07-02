@@ -1,0 +1,13 @@
+{
+  "name": "acorn-demo",
+  "version": "1.0.0",
+  "description": "acorn demo",
+  "main": "index.js",
+  "author": "ektx",
+  "license": "MIT",
+  "dependencies": {
+    "acorn": "^6.0.4",
+    "escodegen": "^1.11.0",
+    "estraverse": "^4.2.0"
+  }
+}

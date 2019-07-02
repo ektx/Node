@@ -1,0 +1,11 @@
+{
+  "name": "normalizr-demo",
+  "version": "1.0.0",
+  "description": "练习",
+  "main": "index.js",
+  "author": "ektx",
+  "license": "MIT",
+  "dependencies": {
+    "normalizr": "^3.2.4"
+  }
+}

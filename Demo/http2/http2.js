@@ -1,8 +1,8 @@
-const 	http = require('spdy'),
-		url = require('url'),
-		fs = require('fs'),
-		express = require('express'),
-		path = require('path');
+const http = require('spdy')
+const url = require('url')
+const fs = require('fs')
+const express = require('express')
+const path = require('path')
 
 const app = express();
 const port = 3003;
@@ -31,17 +31,17 @@ app.get('/', (req, res)=> {
 
 app.get('/option/?', (req, res) => {
   console.log(req.url)
-    allow(res)
-    let size = req.query['size']
-    let delay = req.query['delay']
-    let buf = new Buffer(size * 1024 * 1024)
-    setTimeout(() => {
-        res.send(buf.toString('utf8'))
-    }, delay)
+  allow(res)
+  let size = req.query['size']
+  let delay = req.query['delay']
+  let buf = new Buffer(size * 1024 * 1024)
+  setTimeout(() => {
+      res.send(buf.toString('utf8'))
+  }, delay)
 })
 
 http.createServer(options, app).listen(port, (err) => {
-    if (err) throw new Error(err)
-    console.log(`Http 2.x server listening on port ${port}`)
+  if (err) throw new Error(err)
+  console.log(`Http 2.x server listening on port https://localhost:${port}`)
 })
 

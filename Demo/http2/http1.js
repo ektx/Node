@@ -41,6 +41,6 @@ app.get('/option/?', (req, res) => {
 
 http.createServer(options, app).listen(port, (err) => { 
     if (err) throw new Error(err)
-    console.log(`Http 1.x server listening on port ${port}`)
+    console.log(`Http 1.x server listening on port https://localhost:${port}`)
 })
 

@@ -1,0 +1,10 @@
+{
+  "name": "carlo-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "ektx",
+  "license": "MIT",
+  "dependencies": {
+    "carlo": "^0.9.23"
+  }
+}

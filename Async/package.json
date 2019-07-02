@@ -1,11 +1,11 @@
 {
-  "name": "demo01",
+  "name": "async-demo-01",
   "version": "0.0.1",
   "description": "async demo",
   "main": "demo.js",
   "author": "ektx",
   "license": "MIT",
   "dependencies": {
-    "async": "^2.1.5"
+    "async": "^2.6.1"
   }
 }
