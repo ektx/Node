@@ -1,0 +1,9 @@
+{
+  "name": "monaco-editor-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "monaco-editor": "^0.17.1"
+  }
+}
