@@ -10,7 +10,6 @@ Node.js学习案例与笔记
 功能是把ejs模板文件生成静态页面
 
 
-
 ## NPM
 
 #### 发布
@@ -19,6 +18,7 @@ Node.js学习案例与笔记
 npm publish
 ```
 <br/>  
+
 ## 开源项目推荐
 
 #### Node-Notifier
@@ -27,6 +27,7 @@ A Node.js module for sending notifications on native Mac, Windows and Linux (or 
 一个可以使用 Mac、Windows 和 Linux 系统原生的通知功能 Node.js 模块。
 
 <br/>  
+
 ### 数据生成工具
 
 #### Chance
