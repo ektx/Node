@@ -13,7 +13,6 @@ const puppeteer = require('puppeteer-core');
   const page = await browser.newPage()
 
   await page.goto('https://passport.bilibili.com/login')
-  // const nameInt = await page.$();
   const pawdInt = await page.$('#login-passwd');
   const submitBtn = await page.$('a.btn.btn-login')
 
